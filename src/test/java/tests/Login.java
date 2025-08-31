@@ -1,5 +1,8 @@
 package tests;
 
+import mobile.enums.BranchesCommon;
+import mobile.enums.Contour;
+import mobile.enums.Language;
 import mobile.pages.onbording.LanguageSelectionPage;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +13,11 @@ public class Login extends BaseTest{
         LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()
-                .languageSelection("Русский")
+                .languageSelection(Language.RUSSIAN)
                 .tapButtonNext()
                 .checkInitElements()
-                .selectEnvironment("common")
-                .selectBranch("TEST-COMMON")
+                .selectEnvironment(Contour.COMMON)
+                .selectBranch(BranchesCommon.TEST)
                 .tapChangeContour()
                 .tapButtonNext();
     }

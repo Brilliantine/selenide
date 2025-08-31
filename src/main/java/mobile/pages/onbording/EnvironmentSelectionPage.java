@@ -3,6 +3,8 @@ package mobile.pages.onbording;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.enums.BranchesCommon;
+import mobile.enums.Contour;
 
 import java.time.Duration;
 
@@ -23,16 +25,16 @@ public class EnvironmentSelectionPage {
     }
 
     @Step("Выбор контура")
-    public EnvironmentSelectionPage selectEnvironment(String environment){
-        $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + environment + "']"))
+    public EnvironmentSelectionPage selectEnvironment(Contour contour){
+        $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + contour.getContour() + "']"))
                 .shouldBe(visible)
                 .click();
         return this;
     }
 
     @Step("Выбор ветки")
-    public EnvironmentSelectionPage selectBranch(String branch){
-        $(AppiumBy.xpath("//android.widget.RadioButton[@text='"+ branch +"']"))
+    public EnvironmentSelectionPage selectBranch(BranchesCommon branch){
+        $(AppiumBy.xpath("//android.widget.RadioButton[@text='"+ branch.getBranch() +"']"))
                 .shouldBe(visible)
                 .click();
         return this;
