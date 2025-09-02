@@ -29,7 +29,6 @@ public class AgreementPage {
     @Step("Отказ от лицензионного соглашения")
     public AlertDialog tapDeclineButton(){
         declineButton
-                .shouldBe(visible)
                 .click();
         return new AlertDialog();
     }
@@ -37,7 +36,6 @@ public class AgreementPage {
     @Step("Принятие лицензионного соглашения")
     public AgreementKasperskyPage tapAcceptButton(){
         acceptButton
-                .shouldBe(visible)
                 .click();
         return new AgreementKasperskyPage();
     }

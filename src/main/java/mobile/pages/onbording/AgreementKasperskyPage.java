@@ -23,4 +23,18 @@ public class AgreementKasperskyPage {
         declineButton.shouldBe(visible);
         return this;
     }
+
+    @Step("Приниммаем соглашение касперского")
+    public TutorialPage tapAcceptButton(){
+        acceptButton
+                .click();
+        return new TutorialPage();
+    }
+
+    @Step("Не принимаем соглашение касперского")
+    public TutorialPage tapDeclineButton(){
+        declineButton
+                .click();
+        return new TutorialPage();
+    }
 }
