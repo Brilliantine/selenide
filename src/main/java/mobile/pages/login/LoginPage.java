@@ -3,7 +3,9 @@ package mobile.pages.login;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.dto.AddUserData;
 import mobile.pages.main.MainPage;
+import mobile.pages.protect.ProtectedPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
@@ -27,27 +29,23 @@ public class LoginPage {
         buttonLogin.shouldBe(visible);
         return this;
     }
-    @Step("Вводим логин: {login}")
-    public LoginPage setLogin(String login ){
-        inputLogin.shouldBe(visible).setValue(login);
-        return this;
-    }
 
-    @Step("Вводим пароль: {password}")
-    public LoginPage setPassword(String password){
-        inputPassword.shouldBe(visible).setValue(password);
+    @Step("Вводим логин: {userData.getLogin()} и пароль: {userData.getUserPassword()}")
+    public LoginPage setLoginAndPassword(AddUserData userData){
+        inputLogin.setValue(userData.getLogin());
+        inputPassword.setValue(userData.getUserPassword());
         return this;
-    }
-
-    @Step("Логинимся второй или более раз")
-    public MainPage tapButtonLogin(){
-        buttonLogin.shouldBe(visible).click();
-        return new MainPage();
     }
 
     @Step("Логинимся первый раз")
-    public ProtectedPage tapBattonLogin(){
+    public ProtectedPage tapBattonLoginAndProceedToProtectedPage(){
         buttonLogin.shouldBe(visible).click();
         return new ProtectedPage();
+    }
+
+    @Step("Логинимся второй или более раз")
+    public MainPage tapButtonLoginAndProceedToMainPage(){
+        buttonLogin.shouldBe(visible).click();
+        return new MainPage();
     }
 }

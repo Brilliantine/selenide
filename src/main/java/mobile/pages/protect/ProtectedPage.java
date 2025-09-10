@@ -1,4 +1,4 @@
-package mobile.pages.login;
+package mobile.pages.protect;
 
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;

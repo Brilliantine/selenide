@@ -1,4 +1,4 @@
-package mobile.pages.login;
+package mobile.pages.protect;
 
 public class PinCodePage {
 }
