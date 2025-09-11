@@ -3,6 +3,7 @@ package mobile.pages.main;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.calendar.CalendarPage;
 import mobile.pages.login.LoginPage;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -18,7 +19,8 @@ public class MainPage {
             fieldFrom = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[1]")),
             fieldWhere = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[2]")),
             buttonSearchTrains = $(AppiumBy.id("ru.rzd.pass.debug:id/search_button")),
-            thereDateHeader =$(AppiumBy.id("ru.rzd.pass.debug:id/there_date_header"));
+            thereDateHeader =$(AppiumBy.id("ru.rzd.pass.debug:id/there_date_header")),
+            selectDate = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/day\"]"));
 
     @Step("Проверка начальных элементов главной страницы")
     public MainPage checkInitElements(){
@@ -40,5 +42,11 @@ public class MainPage {
     public LoginPage tapButtonLogin(){
         buttonLogin.shouldBe(visible).click();
         return new LoginPage();
+    }
+
+    @Step("Перейти в календарь")
+    public CalendarPage openCalendar(){
+        selectDate.shouldBe(visible).click();
+        return new CalendarPage();
     }
 }

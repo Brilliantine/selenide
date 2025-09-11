@@ -31,6 +31,7 @@ public class SearchStationPage {
         return this;
     }
 
+    @Step("Выбрать станцию: {value}")
     public MainPage clickOnElement (String value){
         if($(AppiumBy.xpath("//android.widget.TextView[contains(@resource-id,'id/tvTitle') and @text='" + value + "']")).is(visible)){
             $(AppiumBy.xpath("//android.widget.TextView[contains(@resource-id,'id/tvTitle') and @text='" + value + "']")).click();
