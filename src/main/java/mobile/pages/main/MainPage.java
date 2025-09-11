@@ -36,12 +36,9 @@ public class MainPage {
         return new SideMenuPage();
     }
 
-    @Step("Нажимаем на кнопку Войти")
+    @Step("Нажать на кнопку Войти")
     public LoginPage tapButtonLogin(){
         buttonLogin.shouldBe(visible).click();
         return new LoginPage();
     }
-
-
-
 }
