@@ -1,13 +1,14 @@
 package mobile.pages.main;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.appium.SelenideAppium.$;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
+
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.calendar.CalendarPage;
 import mobile.pages.login.LoginPage;
-
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.appium.SelenideAppium.$;
+import mobile.pages.searchTrains.SearchStationPage;
 
 public class MainPage {
 
@@ -48,5 +49,17 @@ public class MainPage {
     public CalendarPage openCalendar(){
         selectDate.shouldBe(visible).click();
         return new CalendarPage();
+    }
+
+    @Step("Перейти к поиску станции отправления")
+    public SearchStationPage searchStationFromPage(){
+        fieldFrom.click();
+        return new SearchStationPage();
+    }
+
+    @Step("Перейти к поиску станции назначения")
+    public SearchStationPage searchStationWherePage(){
+        fieldWhere.click();
+        return new SearchStationPage();
     }
 }
