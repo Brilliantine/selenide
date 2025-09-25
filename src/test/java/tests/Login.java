@@ -1,12 +1,21 @@
 package tests;
 
+import mobile.dto.AddUserData;
 import mobile.enums.BranchesCommon;
 import mobile.enums.Contour;
 import mobile.enums.Language;
 import mobile.pages.onbording.LanguageSelectionPage;
 import org.junit.jupiter.api.Test;
 
+import static mobile.utils.Constans.LOGIN;
+import static mobile.utils.Constans.PASSWORD;
+
 public class Login extends BaseTest{
+
+    private final AddUserData addUserData = AddUserData.builder()
+            .login(LOGIN)
+            .userPassword(PASSWORD)
+            .build();
 
     @Test
     public void login(){
@@ -19,6 +28,21 @@ public class Login extends BaseTest{
                 .selectEnvironment(Contour.COMMON)
                 .selectBranch(BranchesCommon.TEST)
                 .tapChangeContour()
-                .tapButtonNext();
+                .tapButtonNext()
+                .checkInitElements()
+                .tapAcceptButton()
+                .checkInitElements()
+                .tapAcceptButton()
+                .checkInitElements()
+                .swipeToEndTutorial()
+                .tapButtonClose()
+                .checkInitElements()
+                .tapButtonLogin()
+                .checkInitElements()
+                .setLoginAndPassword(addUserData)
+                .tapBattonLoginAndProceedToProtectedPage()
+                .checkInitElements()
+                .proceedToMainPage()
+                .checkUserIsLoggedIn();
     }
 }

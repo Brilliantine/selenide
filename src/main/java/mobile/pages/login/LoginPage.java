@@ -30,7 +30,7 @@ public class LoginPage {
         return this;
     }
 
-    @Step("Вводим логин: {userData.getLogin()} и пароль: {userData.getUserPassword()}")
+    @Step("Вводим логин и пароль")
     public LoginPage setLoginAndPassword(AddUserData userData){
         inputLogin.setValue(userData.getLogin());
         inputPassword.setValue(userData.getUserPassword());

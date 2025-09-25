@@ -33,7 +33,7 @@ public class AgreementPage {
         return new AlertDialog();
     }
 
-    @Step("Принятие лицензионного соглашения и переход Касперского")
+    @Step("Принятие лицензионного соглашения и переход к соглашению Касперского")
     public AgreementKasperskyPage tapAcceptButton(){
         acceptButton
                 .click();

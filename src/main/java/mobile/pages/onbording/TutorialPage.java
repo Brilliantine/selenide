@@ -7,7 +7,7 @@ import mobile.pages.main.MainPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
-import static java.lang.Thread.sleep;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class TutorialPage {
 
@@ -32,7 +32,7 @@ public class TutorialPage {
 
     @Step("Закрываем туториал и переходим к главному экрану")
     public MainPage tapButtonClose(){
-        buttonClose.click();
+        buttonClose.shouldBe(visible).click();
         return new MainPage();
     }
 
@@ -49,7 +49,16 @@ public class TutorialPage {
     }
 
     @Step("Пролистываем туториал до конца")
-    public void swipeToEndTutorial(){
+    //Новый более простой метод
+    public TutorialPage swipeToEndTutorial(){
+        while (buttonForward.is(visible)){
+            buttonForward.click();
+            sleep(500);
+        }
+        return this;
+    }
+    //Старый метод нуждается в доработке. После того как все туториалы пролистаны, пропадает кнопка "вперед" из-за этого тест падает
+    /*public TutorialPage swipeToEndTutorial(){
        String counterText = slideCounter.getText();
        String totalSlidesStr = counterText.split(" ")[2];
 
@@ -63,6 +72,8 @@ public class TutorialPage {
            throw new RuntimeException("Не удалось распарсить счетчик слайдов "+e.getMessage());
        }
 
-    }
+       return this;
+
+    }*/
 
 }

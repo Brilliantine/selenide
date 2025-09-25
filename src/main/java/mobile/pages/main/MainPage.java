@@ -62,4 +62,10 @@ public class MainPage {
         fieldWhere.click();
         return new SearchStationPage();
     }
+
+    @Step("Проверка успешной авторизации")
+    public MainPage checkUserIsLoggedIn(){
+        buttonLogin.shouldNotBe(visible);
+        return this;
+    }
 }
