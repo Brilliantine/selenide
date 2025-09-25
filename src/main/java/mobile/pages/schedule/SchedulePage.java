@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import mobile.pages.parts.Progressbar;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -41,8 +43,8 @@ public class SchedulePage {
     @Step("Закрыть всплывающее окно со списком ДП")
     public SchedulePage closeCardList(){
 
-        if(progressCardListTitle.is(visible)){
-            btnSettings.shouldBe(visible).click();
+        if(progressCardListTitle.is(visible, Duration.ofSeconds(3))){
+            btnDisagreeEcard.shouldBe(visible).click();
         }
         else {
             log.info("Всплывающее окно со списком ДП не появилось");
