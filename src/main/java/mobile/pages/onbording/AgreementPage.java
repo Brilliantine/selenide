@@ -4,7 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.alerts.AlertDialog;
-import org.checkerframework.checker.units.qual.A;
+//import org.checkerframework.checker.units.qual.A;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
@@ -33,7 +33,7 @@ public class AgreementPage {
         return new AlertDialog();
     }
 
-    @Step("Принятие лицензионного соглашения")
+    @Step("Принятие лицензионного соглашения и переход Касперского")
     public AgreementKasperskyPage tapAcceptButton(){
         acceptButton
                 .click();

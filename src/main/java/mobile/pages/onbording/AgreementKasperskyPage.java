@@ -24,7 +24,7 @@ public class AgreementKasperskyPage {
         return this;
     }
 
-    @Step("Приниммаем соглашение касперского")
+    @Step("Приниммаем соглашение касперского и переходим к туториалу")
     public TutorialPage tapAcceptButton(){
         acceptButton
                 .click();

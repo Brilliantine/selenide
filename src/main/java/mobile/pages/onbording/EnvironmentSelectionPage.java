@@ -47,7 +47,7 @@ public class EnvironmentSelectionPage {
                 .click();
         return this;
     }
-    @Step("Нажимаем на кнопку ПРОДОЛЖИТЬ")
+    @Step("Нажимаем на кнопку ПРОДОЛЖИТЬ и переходим к пользовательскому соглашению")
     public AgreementPage tapButtonNext(){
         buttonNext
                 .shouldBe(visible)

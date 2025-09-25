@@ -26,7 +26,7 @@ public class LanguageSelectionPage {
         return this;
     }
 
-    @Step("Нажимаем на кнопку ПРОДОЛЖИТЬ")
+    @Step("Нажимаем на кнопку ПРОДОЛЖИТЬ и переходим к выбору контура")
     public EnvironmentSelectionPage tapButtonNext(){
         buttonNext
                 .shouldBe(visible)

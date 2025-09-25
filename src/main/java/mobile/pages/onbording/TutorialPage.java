@@ -30,7 +30,7 @@ public class TutorialPage {
         return this;
     }
 
-    @Step("Нажимаем на кнопку Закрыть")
+    @Step("Закрываем туториал и переходим к главному экрану")
     public MainPage tapButtonClose(){
         buttonClose.click();
         return new MainPage();
