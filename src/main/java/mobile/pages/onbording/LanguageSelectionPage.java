@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class LanguageSelectionPage {
 
-    private final SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
+    private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
     private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));
 
     @Step("Проверка элементов страницы выбора языка")
@@ -32,5 +32,10 @@ public class LanguageSelectionPage {
                 .shouldBe(visible)
                 .click();
         return new EnvironmentSelectionPage();
+    }
+
+    public static String getTextTitle(){
+        title.shouldBe(visible);
+        return title.getText();
     }
 }

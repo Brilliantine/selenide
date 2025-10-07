@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class EnvironmentSelectionPage {
-    private final SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
+    private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
     private final SelenideAppiumElement changeContour = $(AppiumBy.id("ru.rzd.pass.debug:id/apply_host"));
     private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));
 
@@ -53,6 +53,11 @@ public class EnvironmentSelectionPage {
                 .shouldBe(visible)
                 .click();
         return new AgreementPage();
+    }
+
+    public static String getTextTitle(){
+        title.shouldBe(visible);
+        return title.getText();
     }
 
 }

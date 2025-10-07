@@ -1,4 +1,4 @@
-package tests;
+package tests.login;
 
 import mobile.dto.AddUserData;
 import mobile.enums.BranchesCommon;
@@ -6,11 +6,12 @@ import mobile.enums.Contour;
 import mobile.enums.Language;
 import mobile.pages.onbording.LanguageSelectionPage;
 import org.junit.jupiter.api.Test;
+import tests.BaseTest;
 
 import static mobile.utils.Constans.LOGIN;
 import static mobile.utils.Constans.PASSWORD;
 
-public class Login extends BaseTest{
+public class LoginTest extends BaseTest {
 
     private final AddUserData addUserData = AddUserData.builder()
             .login(LOGIN)
