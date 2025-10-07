@@ -4,17 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import mobile.enums.BranchesCommon;
 import mobile.enums.Contour;
 import mobile.enums.Language;
-import mobile.pages.onbording.EnvironmentSelectionPage;
-import mobile.pages.onbording.LanguageSelectionPage;
+import mobile.pages.onbording.*;
 
 @Slf4j
 public class Onbording {
-    private final String titleTextLanguageSelectionPage = LanguageSelectionPage.getTextTitle();
-    private final String titleEnvironmentSelectionPage = EnvironmentSelectionPage.getTextTitle();
 
-    public void completeIfPresents(){
+    public static void completeOnboarding(){
         LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
-        if(titleTextLanguageSelectionPage.equals("Выберите язык приложения")){
+        if(languageSelectionPage.isPageDisplayed()){
             languageSelectionPage
                     .checkInitElements()
                     .languageSelection(Language.RUSSIAN)
@@ -22,13 +19,34 @@ public class Onbording {
         }
 
         EnvironmentSelectionPage environmentSelectionPage = new EnvironmentSelectionPage();
-        if(titleEnvironmentSelectionPage.equals("Debug")){
+        if(environmentSelectionPage.isPageDisplayed()){
             environmentSelectionPage
                     .checkInitElements()
                     .selectEnvironment(Contour.COMMON)
                     .selectBranch(BranchesCommon.TEST)
                     .tapChangeContour()
                     .tapButtonNext();
+        }
+
+        AgreementPage agreementPage = new AgreementPage();
+        if(agreementPage.isPageDisplayed()){
+            agreementPage
+                    .checkInitElements()
+                    .tapAcceptButton();
+        }
+
+        AgreementKasperskyPage agreementKasperskyPage = new AgreementKasperskyPage();
+        if(agreementPage.isPageDisplayed()){
+            agreementKasperskyPage
+                    .checkInitElements()
+                    .tapAcceptButton();
+        }
+
+        TutorialPage tutorialPage = new TutorialPage();
+        if(tutorialPage.isPageDisplayed()){
+            tutorialPage
+                    .checkInitElements()
+                    .tapButtonClose();
         }
     }
 }

@@ -4,6 +4,8 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -36,5 +38,10 @@ public class AgreementKasperskyPage {
         declineButton
                 .click();
         return new TutorialPage();
+    }
+
+    @Step("Проверяем что находимся на экране касперского")
+    public boolean isPageDisplayed(){
+        return title.is(visible, Duration.ofSeconds(2));
     }
 }

@@ -8,7 +8,6 @@ public class DebugTest extends BaseTest {
 
     @Test
     public void debug(){
-        Onbording onbording = new Onbording();
-        onbording.completeIfPresents();
+        Onbording.completeOnboarding();
     }
 }

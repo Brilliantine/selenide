@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import mobile.pages.alerts.AlertDialog;
 //import org.checkerframework.checker.units.qual.A;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -38,6 +40,11 @@ public class AgreementPage {
         acceptButton
                 .click();
         return new AgreementKasperskyPage();
+    }
+
+    @Step("Проверяем что открыт экран лицензионного соглашения")
+    public boolean isPageDisplayed(){
+        return title.is(visible, Duration.ofSeconds(2));
     }
 
 }

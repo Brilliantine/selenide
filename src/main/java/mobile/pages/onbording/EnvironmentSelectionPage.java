@@ -55,6 +55,11 @@ public class EnvironmentSelectionPage {
         return new AgreementPage();
     }
 
+    @Step("Проверяем что открыт экран выбора контура")
+    public boolean isPageDisplayed(){
+        return title.is(visible,Duration.ofSeconds(2));
+    }
+
     public static String getTextTitle(){
         title.shouldBe(visible);
         return title.getText();

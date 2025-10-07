@@ -5,22 +5,20 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.main.MainPage;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class TutorialPage {
 
-    private final SelenideAppiumElement buttonClose =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/pass_button"));
-    private final SelenideAppiumElement tutorialImage =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/tutorial_image"));
-    private final SelenideAppiumElement buttonForward =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/button_forward"));
-    private final SelenideAppiumElement buttonBackward =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/button_backward"));
-    private final SelenideAppiumElement slideCounter =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/text_counter"));
+    private final SelenideAppiumElement
+            buttonClose = $(AppiumBy.id("ru.rzd.pass.debug:id/pass_button")),
+            tutorialImage = $(AppiumBy.id("ru.rzd.pass.debug:id/tutorial_image")),
+            buttonForward = $(AppiumBy.id("ru.rzd.pass.debug:id/button_forward")),
+            buttonBackward = $(AppiumBy.id("ru.rzd.pass.debug:id/button_backward")),
+            slideCounter = $(AppiumBy.id("ru.rzd.pass.debug:id/text_counter"));
 
     @Step("Проверяем начальные элементы на странице туториола")
     public TutorialPage checkInitElements (){
@@ -57,7 +55,12 @@ public class TutorialPage {
         }
         return this;
     }
-    //Старый метод нуждается в доработке. После того как все туториалы пролистаны, пропадает кнопка "вперед" из-за этого тест падает
+
+    @Step("Проверяем что находимся на экране с туториолом")
+    public boolean isPageDisplayed(){
+        return tutorialImage.is(visible, Duration.ofSeconds(2));
+    }
+    //Старый метод. Нуждается в доработке. После того как все туториалы пролистаны, пропадает кнопка "вперед" из-за этого тест падает
     /*public TutorialPage swipeToEndTutorial(){
        String counterText = slideCounter.getText();
        String totalSlidesStr = counterText.split(" ")[2];

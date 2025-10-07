@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.enums.Language;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class LanguageSelectionPage {
@@ -32,6 +34,11 @@ public class LanguageSelectionPage {
                 .shouldBe(visible)
                 .click();
         return new EnvironmentSelectionPage();
+    }
+
+    @Step("Проверяем что открыт экран выбора языка")
+    public boolean isPageDisplayed(){
+        return title.is(visible, Duration.ofSeconds(2));
     }
 
     public static String getTextTitle(){
