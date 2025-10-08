@@ -34,9 +34,9 @@ public class MainPage {
         return this;
     }
     @Step("Открыть левое боковое меню")
-    public SideMenuPage tapButtonSideMenu(){
+    public MainPage tapButtonSideMenu(){
         buttonSideMenu.click();
-        return new SideMenuPage();
+        return this;
     }
 
     @Step("Нажать на кнопку Войти")
