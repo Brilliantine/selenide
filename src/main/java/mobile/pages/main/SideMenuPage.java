@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import mobile.pages.base.BasePage;
+import mobile.pages.passengers.PassengersPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
@@ -44,11 +45,29 @@ public class SideMenuPage extends BasePage {
         private final String value;
     }
 
+    //Универсальный метод
     @Step("Нажать на пункт 'option.value' в боковом меню")
     public void clickMenuItem(MenuItem option){
         $(byText(option.getValue()))
                 .shouldBe(visible)
                 .click();
+    }
+
+    //Методы для цепочки вызовов без прерываний
+    @Step("Нажать на пункт 'Пассажиры'")
+    public PassengersPage openPassengers(){
+        $(byText(MenuItem.PASSENGERS.getValue()))
+                .shouldBe(visible)
+                .click();
+        return new PassengersPage();
+    }
+
+    @Step("Нажать на пункт 'Купить билет'")
+    public MainPage openMainPage(){
+        $(byText(MenuItem.BUY_TICKETS.getValue()))
+                .shouldBe(visible)
+                .click();
+        return new MainPage();
     }
 
 }
