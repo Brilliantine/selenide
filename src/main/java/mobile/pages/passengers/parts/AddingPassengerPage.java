@@ -9,16 +9,15 @@ import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class AddingPassengerPage {
-    //Общие элементы страницы
     private final SelenideAppiumElement
+            //Общие элементы страницы
             titlePage = $(byText("Новый пассажир")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад")),
             formAutoFill = $(AppiumBy.id("ru.rzd.pass.debug:id/fill_from_profile_layout")),
             btnFillFromProfile = $(AppiumBy.id("ru.rzd.pass.debug:id/fill_from_profile")),
             btnHideFormAutoFill = $(AppiumBy.id("ru.rzd.pass.debug:id/hide_fill_from_profile")),
-            btnSave = $(AppiumBy.id("ru.rzd.pass.debug:id/save_button"));
-
-    private final SelenideAppiumElement
+            btnSave = $(AppiumBy.id("ru.rzd.pass.debug:id/save_button")),
+    //ФИО
             patronymic = $(AppiumBy.id("ru.rzd.pass.debug:id/patronymic_edit")),
             name = $(AppiumBy.id("ru.rzd.pass.debug:id/name_edit")),
             surname = $(AppiumBy.id("ru.rzd.pass.debug:id/surname_edit")),
@@ -28,13 +27,23 @@ public class AddingPassengerPage {
             alertMessage = $(AppiumBy.id("android:id/message")),
             btnAlertNoPatronymic = $(AppiumBy.id("android:id/button1")),
             btnAlertThereArePatronymic = $(AppiumBy.id("android:id/button2")),
+    //Дата, Пол
+            fieldDateBirthday = $(AppiumBy.id("ru.rzd.pass.debug:id/etDateBirth")),
+            listGender = $(AppiumBy.id("ru.rzd.pass.debug:id/gender")),
     //Документ
             documentView = $(AppiumBy.id("ru.rzd.pass.debug:id/document_view")),
             addNewDocument = $(AppiumBy.id("ru.rzd.pass.debug:id/empty")),
-
-
-            fieldDateBirthday = $(AppiumBy.id("ru.rzd.pass.debug:id/etDateBirth")),
-            listGender = $(AppiumBy.id("ru.rzd.pass.debug:id/gender"));
+    //Бонусные карты
+            btnAddCard = $(AppiumBy.id("ru.rzd.pass.debug:id/addCardButton")),
+    //Контактные данные
+            fieldMail = $(AppiumBy.id("ru.rzd.pass.debug:id/emailEditText")),
+            fieldPhone = $(AppiumBy.id("ru.rzd.pass.debug:id/phoneEditText")),
+            noPhoneDisclamer = $(AppiumBy.id("ru.rzd.pass.debug:id/noPhoneDisclamer")),
+    //Доп поля
+            formAdditionally = $(AppiumBy.id("ru.rzd.pass.debug:id/tvReservationAdditionalExpand")),
+            snils = $(AppiumBy.id("ru.rzd.pass.debug:id/snils_edit")),
+            chbDependent = $(AppiumBy.id("ru.rzd.pass.debug:id/chbDependent")),
+            chbInvalid = $(AppiumBy.id("ru.rzd.pass.debug:id/chbInvalid"));
 
     @Step("Проверка начальных элементов страницы 'Новый пассажир'")
     public AddingPassengerPage checkInitElements(){
@@ -53,7 +62,7 @@ public class AddingPassengerPage {
         return this;
     }
 
-    @Step("Проверка полей ФИО после авто заполнения")
+    @Step("Проверка полей ФИО после автозаполнения")
     public AddingPassengerPage checkingFullNameFields(){
         surname
                 .shouldBe(visible)
@@ -76,4 +85,31 @@ public class AddingPassengerPage {
 
         return this;
     }
+
+    @Step("Выбрать мужской пол")
+    public AddingPassengerPage selectMenGender(){
+        listGender
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        $(byText("Мужской"))
+                .shouldBe(visible)
+                .click();
+        listGender.shouldHave(text("Мужской"));
+        return this;
+    }
+
+    @Step("Выбрать женский пол")
+    public AddingPassengerPage selectFemaleGender(){
+        listGender
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        $(byText("Женский"))
+                .shouldBe(visible)
+                .click();
+        listGender.shouldHave(text("Женский"));
+        return this;
+    }
+
 }
