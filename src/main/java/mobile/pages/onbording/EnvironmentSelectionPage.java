@@ -9,6 +9,7 @@ import mobile.enums.Contour;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class EnvironmentSelectionPage {
@@ -35,6 +36,14 @@ public class EnvironmentSelectionPage {
     @Step("Выбор ветки")
     public EnvironmentSelectionPage selectBranch(BranchesCommon branch){
         $(AppiumBy.xpath("//android.widget.RadioButton[@text='"+ branch.getBranch() +"']"))
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Выбор изолированной ветки")
+    public EnvironmentSelectionPage selectIsolatedBranch(String branch){
+        $(byText(branch))
                 .shouldBe(visible)
                 .click();
         return this;
