@@ -21,7 +21,7 @@ public class Initializer {
         try (InputStream inputStream = Initializer.class.getClassLoader()
                 .getResourceAsStream("config.properties")){
             if(inputStream == null){
-                log.error("Файл config.properties не найден");
+                log.error("❌ Файл config.properties не найден");
             }
             config.load(inputStream);
         }catch (Exception exception){
@@ -58,6 +58,7 @@ public class Initializer {
             //DesiredCapabilities capabilities = getDesiredCapabilities(); //Устаревший подход. Можно удалять строку
             UiAutomator2Options options = getOPtoins();
             driver =new AndroidDriver(appiumServerURL,options);
+            log.info("🚀 Драйвер успешно инициализирован");
         }catch (Exception e){
             log.error(e.getMessage());
             throw new RuntimeException(e);
