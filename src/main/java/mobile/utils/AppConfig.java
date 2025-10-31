@@ -68,6 +68,6 @@ public class AppConfig {
     }
 
     public String getPathToElement(){
-        return getAppPackage() + ":id/";
+        return getAppPackage();
     }
 }
