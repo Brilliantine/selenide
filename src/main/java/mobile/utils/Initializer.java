@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 //import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -42,13 +41,20 @@ public class Initializer {
         return capabilities;
     }*/
 
-    private static UiAutomator2Options getOPtoins(){
+    private static UiAutomator2Options getOptoins(){
         return new UiAutomator2Options()
-                .setDeviceName(config.getProperty("deviceName"))
+                /*.setDeviceName(config.getProperty("deviceName"))
                 .setPlatformName(config.getProperty("platformName"))
                 .setAutomationName(config.getProperty("automationName"))
                 .setAppPackage(config.getProperty("appPackage"))
-                .setAppActivity(config.getProperty("appActivity"));
+                .setAppActivity(config.getProperty("appActivity"));*/
+
+                //Переход на AppConfig
+                .setDeviceName(AppConfig.getInstance().getProperty("deviceName"))
+                .setPlatformName(AppConfig.getInstance().getProperty("platformName"))
+                .setAutomationName(AppConfig.getInstance().getProperty("automationName"))
+                .setAppPackage(AppConfig.getInstance().getAppPackage())
+                .setAppActivity(AppConfig.getInstance().getProperty("appActivity"));
     }
 
     public static void initDriver(){
@@ -56,7 +62,7 @@ public class Initializer {
             URI appiumServerURI = new URI(config.getProperty("appiumServerURL"));
             URL appiumServerURL = appiumServerURI.toURL();
             //DesiredCapabilities capabilities = getDesiredCapabilities(); //Устаревший подход. Можно удалять строку
-            UiAutomator2Options options = getOPtoins();
+            UiAutomator2Options options = getOptoins();
             driver =new AndroidDriver(appiumServerURL,options);
             log.info("🚀 Драйвер успешно инициализирован");
         }catch (Exception e){
