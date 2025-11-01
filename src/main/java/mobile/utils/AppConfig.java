@@ -16,11 +16,26 @@ public class AppConfig {
     private static AppConfig instance;
     private final Properties config = new Properties();
     private ServerType serverType = ServerType.DEBUG; // default
-
+    /**
+     * Приватный конструктор (Singleton pattern).
+     * При создании экземпляра автоматически загружает конфигурацию.
+     * Нельзя создать через new AppConfig() - только через getInstance().
+     */
     private AppConfig() {
         loadConfig();
     }
-
+    /**
+     * Возвращает единственный экземпляр AppConfig (Singleton).
+     *
+     * Особенности:
+     * - synchronized - потокобезопасность при многопоточном доступе
+     * - Ленивая инициализация - создается только при первом вызове
+     * - Всегда возвращает один и тот же экземпляр
+     *
+     * Использование:
+     * AppConfig config = AppConfig.getInstance();
+     * config.getAppPackage();
+     */
     public static synchronized AppConfig getInstance() {
         if (instance == null) {
             instance = new AppConfig();
@@ -28,6 +43,7 @@ public class AppConfig {
         return instance;
     }
 
+    //Загружает конфигурацию и определяет тип сервера.
     private void loadConfig() {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("config.properties")) {
             if (is == null) {
@@ -50,6 +66,7 @@ public class AppConfig {
         }
     }
 
+    //Получаем пакет приложения в виде строки
     public String getAppPackage() {
         /*switch (serverType) {
             case ADAPTER:
@@ -83,6 +100,7 @@ public class AppConfig {
         return serverType;
     }
 
+    //Отдаем пакет в виде строки: ru.rzd.pass.adapter.debug и тд
     public String getPathToElement(){
         return getAppPackage();
     }
