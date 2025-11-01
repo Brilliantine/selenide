@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.enums.BranchesCommon;
 import mobile.enums.Contour;
+import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
@@ -13,9 +14,13 @@ import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class EnvironmentSelectionPage {
-    private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
+    /*private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
     private final SelenideAppiumElement changeContour = $(AppiumBy.id("ru.rzd.pass.debug:id/apply_host"));
-    private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));
+    private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));*/
+    private final static SelenideAppiumElement
+            title = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/title")),
+            changeContour = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/apply_host")),
+            buttonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continue_button"));
 
     @Step("Проверка элементов страницы выбора контура")
     public EnvironmentSelectionPage checkInitElements(){
@@ -27,7 +32,8 @@ public class EnvironmentSelectionPage {
 
     @Step("Выбор контура")
     public EnvironmentSelectionPage selectEnvironment(Contour contour){
-        $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + contour.getContour() + "']"))
+        //$(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + contour.getContour() + "']"))
+        $(AppiumBy.xpath("//android.widget.TextView[@text='" + contour.getContour() + "']"))
                 .shouldBe(visible)
                 .click();
         return this;

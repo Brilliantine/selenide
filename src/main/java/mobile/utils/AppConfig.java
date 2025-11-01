@@ -49,14 +49,28 @@ public class AppConfig {
     }
 
     public String getAppPackage() {
-        switch (serverType) {
+        /*switch (serverType) {
             case ADAPTER:
                 return config.getProperty("appPackageAdapter");
             case PROD:
                 return config.getProperty("appPackageProd");
             default:
                 return config.getProperty("appPackage");
+        }*/
+        //Временный код для отладки:
+        String pkg;
+        switch (serverType){
+            case ADAPTER:
+                pkg = config.getProperty("appPackageAdapter");
+                break;
+            case PROD:
+                pkg = config.getProperty("appPackageProd");
+                break;
+            default:
+                pkg = config.getProperty("appPackage");
         }
+        System.out.println("📦 Используется пакет: " + pkg);
+        return pkg;
     }
 
     public String getProperty(String key) {

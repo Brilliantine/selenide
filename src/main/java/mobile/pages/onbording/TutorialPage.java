@@ -4,6 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.main.MainPage;
+import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
@@ -13,12 +14,18 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class TutorialPage {
 
-    private final SelenideAppiumElement
+    /*private final SelenideAppiumElement
             buttonClose = $(AppiumBy.id("ru.rzd.pass.debug:id/pass_button")),
             tutorialImage = $(AppiumBy.id("ru.rzd.pass.debug:id/tutorial_image")),
             buttonForward = $(AppiumBy.id("ru.rzd.pass.debug:id/button_forward")),
             buttonBackward = $(AppiumBy.id("ru.rzd.pass.debug:id/button_backward")),
-            slideCounter = $(AppiumBy.id("ru.rzd.pass.debug:id/text_counter"));
+            slideCounter = $(AppiumBy.id("ru.rzd.pass.debug:id/text_counter"));*/
+    private final SelenideAppiumElement
+            buttonClose = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/pass_button")),
+            tutorialImage = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tutorial_image")),
+            buttonForward = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/button_forward")),
+            buttonBackward = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/button_backward")),
+            slideCounter = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/text_counter"));
 
     @Step("Проверяем начальные элементы на странице туториола")
     public TutorialPage checkInitElements (){
@@ -60,6 +67,7 @@ public class TutorialPage {
     public boolean isPageDisplayed(){
         return tutorialImage.is(visible, Duration.ofSeconds(2));
     }
+
     //Старый метод. Нуждается в доработке. После того как все туториалы пролистаны, пропадает кнопка "вперед" из-за этого тест падает
     /*public TutorialPage swipeToEndTutorial(){
        String counterText = slideCounter.getText();

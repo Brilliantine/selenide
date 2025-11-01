@@ -3,6 +3,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.enums.Language;
+import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
@@ -10,8 +11,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class LanguageSelectionPage {
 
-    private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
-    private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));
+    private final static SelenideAppiumElement
+            title = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/continue_button")),
+            buttonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continue_button"));
 
     @Step("Проверка элементов страницы выбора языка")
     public LanguageSelectionPage checkInitElements(){
@@ -22,7 +24,7 @@ public class LanguageSelectionPage {
 
     @Step("Выбираем язык приложения")
     public LanguageSelectionPage languageSelection(Language language){
-        $(AppiumBy.xpath("//android.widget.TextView[@resource-id='ru.rzd.pass.debug:id/name' and @text='"+ language.getLanguageMobile() + "']"))
+        $(AppiumBy.xpath("//android.widget.TextView[@text='"+ language.getLanguageMobile() + "']"))
                 .shouldBe(visible)
                 .click();
         return this;
