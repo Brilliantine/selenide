@@ -15,7 +15,7 @@ public class DebugTest extends BaseTest {
         LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()
-                .languageSelection(RUSSIAN)
+                .languageSelection()
                 .tapButtonNext()
                 .checkInitElements()
                 .selectEnvironment(BRANCHES)

@@ -9,6 +9,8 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
+import static mobile.enums.Language.RUSSIAN;
+
 public class LanguageSelectionPage {
 
     private final static SelenideAppiumElement
@@ -22,9 +24,16 @@ public class LanguageSelectionPage {
         return this;
     }
 
-    @Step("Выбираем язык приложения")
+    @Step("Выбор языка приложения")
     public LanguageSelectionPage languageSelection(Language language){
         $(AppiumBy.xpath("//android.widget.TextView[@text='"+ language.getLanguageMobile() + "']"))
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+    @Step("Выбор русского языка")
+    public LanguageSelectionPage languageSelection(){
+        $(AppiumBy.xpath("//android.widget.TextView[@text='"+ RUSSIAN.getLanguageMobile() + "']"))
                 .shouldBe(visible)
                 .click();
         return this;
