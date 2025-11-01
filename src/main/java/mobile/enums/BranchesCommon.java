@@ -12,7 +12,8 @@ public enum BranchesCommon {
     CHI("CHI-COMMON"),
     PSI("PSI-COMMON"),
     ALPHA("ALPHA-COMMON"),
-    BETA("BETA-COMMON");
+    BETA("BETA-COMMON"),
+    ADAPTER("16501-adapter");
 
     private final String branch;
 }

@@ -21,11 +21,13 @@ public class Onbording {
         EnvironmentSelectionPage environmentSelectionPage = new EnvironmentSelectionPage();
         if(environmentSelectionPage.isPageDisplayed()){
             environmentSelectionPage
-                    .checkInitElements()
+                    .quickOnboarding();
+            //По сути вызов цепочки ниже уже не нужен
+                    /*.checkInitElements()
                     .selectEnvironment(Contour.COMMON)
                     .selectBranch(BranchesCommon.TEST)
                     .tapChangeContour()
-                    .tapButtonNext();
+                    .tapButtonNext();*/
         }
 
         AgreementPage agreementPage = new AgreementPage();

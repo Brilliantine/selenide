@@ -55,6 +55,25 @@ public class EnvironmentSelectionPage {
         return this;
     }
 
+    @Step("Автоматический выбор окружения")
+    public EnvironmentSelectionPage selectAutoEnvironment(){
+        AppConfig config = AppConfig.getInstance();
+
+        //Автоматически получаем контур и ветку для текущей сборки
+        Contour autoContour = config.getAutoContour();
+        BranchesCommon autoBranch = config.getAutoBranch();
+
+        if(autoContour != null){
+            selectEnvironment(autoContour);
+        }
+
+        if(autoBranch != null){
+            selectBranch(autoBranch);
+        }
+
+        return this;
+    }
+
     @Step("Скролим и нажимаем кноопку ПОМЕНЯТЬ КОНТУР")
     public EnvironmentSelectionPage tapChangeContour(){
         changeContour
@@ -67,6 +86,14 @@ public class EnvironmentSelectionPage {
         buttonNext
                 .shouldBe(visible)
                 .click();
+        return new AgreementPage();
+    }
+
+    @Step("Быстрое прохождение онбординга")
+    public AgreementPage quickOnboarding(){
+        selectAutoEnvironment();
+        tapChangeContour();
+        tapButtonNext();
         return new AgreementPage();
     }
 

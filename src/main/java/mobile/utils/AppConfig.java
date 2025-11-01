@@ -2,6 +2,8 @@ package mobile.utils;
 
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.AppiumBy;
+import mobile.enums.BranchesCommon;
+import mobile.enums.Contour;
 import org.openqa.selenium.By;
 import mobile.enums.ServerType;
 
@@ -83,5 +85,15 @@ public class AppConfig {
 
     public String getPathToElement(){
         return getAppPackage();
+    }
+
+    //Получаем контур
+    public Contour getAutoContour() {
+        return serverType.getAutoContour();
+    }
+
+    //Получаем ветку
+    public BranchesCommon getAutoBranch() {
+        return serverType.getAutoBranch();
     }
 }
