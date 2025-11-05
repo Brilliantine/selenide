@@ -4,6 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.main.MainPage;
+import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
@@ -13,9 +14,9 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class SearchStationPage {
 
     private final SelenideAppiumElement
-            inputSearch = $(AppiumBy.id("SelenideAppiumElement")),
-            tabCitiesAndStation = $(AppiumBy.id("ru.rzd.pass.debug:id/first_type_view")),
-            tapRoutes = $(AppiumBy.id("ru.rzd.pass.debug:id/second_type_view"));
+            inputSearch = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/search_src_text")),
+            tabCitiesAndStation = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/first_type_view")),
+            tapRoutes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view"));
 
     @Step("Проверка начальных элементов страницы")
     public SearchStationPage checkInitElements(){

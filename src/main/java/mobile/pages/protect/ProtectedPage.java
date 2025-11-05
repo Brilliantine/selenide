@@ -4,6 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.main.MainPage;
+import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
@@ -11,9 +12,11 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class ProtectedPage {
 
     private final SelenideAppiumElement
-            checkboxUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Не защищать вход в приложение\"]")),
-            checkboxDontUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Не защищать вход в приложение\"]")),
-            butonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));
+            //checkboxUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Не защищать вход в приложение\"]")),
+            //checkboxDontUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Не защищать вход в приложение\"]")),
+            checkboxUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Не защищать вход в приложение\"]")),
+            checkboxDontUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Не защищать вход в приложение\"]")),
+            butonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continue_button"));
 
     @Step("Проверка начальных элементов страницы защиты входа")
     public ProtectedPage checkInitElements(){

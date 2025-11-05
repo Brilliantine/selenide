@@ -12,8 +12,8 @@ public class DebugTest extends BaseTest {
 
     @Test
     public void debug(){
-        Onbording.completeOnboarding();
-        /*LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
+        //Onbording.completeOnboarding();
+        LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()
                 .languageSelection()
@@ -28,7 +28,10 @@ public class DebugTest extends BaseTest {
                 .tapAcceptButton()
                 .checkInitElements()
                 .swipeToEndTutorial()
-                .tapButtonClose();*/
+                .tapButtonClose()
+                .checkInitElements()
+                .openCalendar()
+                .checkInitElements();
 
     }
 }

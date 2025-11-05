@@ -10,12 +10,10 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 //Диалоговое окно при отказе от лицензионного соглашения
 public class AlertDialog {
 
-    private final SelenideAppiumElement message =
-            $(AppiumBy.id("android:id/message"));
-    private final SelenideAppiumElement yes =
-            $(AppiumBy.id("android:id/button1"));
-    private final SelenideAppiumElement no =
-            $(AppiumBy.id("android:id/button2"));
+    private final SelenideAppiumElement
+            message = $(AppiumBy.id("android:id/message")),
+            yes = $(AppiumBy.id("android:id/button1")),
+            no = $(AppiumBy.id("android:id/button2"));
 
     //Получение текста диалогового окна
     public String getDialogMessageWithWait(){

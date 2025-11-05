@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.pages.passengers.parts.AddingPassengerPage;
+import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
@@ -13,10 +14,10 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class PassengersPage extends BasePage {
     private final SelenideAppiumElement
             titlePage = $(byText("Пассажиры")),
-            btnAddPassenger = $(AppiumBy.id("ru.rzd.pass.debug:id/add_passenger_button")),
-            recentPicker = $(AppiumBy.id("ru.rzd.pass.debug:id/first_type_view")),
-            allPicker = $(AppiumBy.id("ru.rzd.pass.debug:id/second_type_view")),
-            btnSearch = $(AppiumBy.id("ru.rzd.pass.debug:id/action_search")),
+            btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/add_passenger_button")),
+            recentPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/first_type_view")),
+            allPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view")),
+            btnSearch = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/action_search")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад"));
 
     @Step("Проверка начальных элементов страницы Пассажиры")

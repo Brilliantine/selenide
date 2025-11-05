@@ -6,22 +6,28 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.base.BasePage;
 import mobile.pages.calendar.CalendarPage;
 import mobile.pages.login.LoginPage;
 import mobile.pages.searchTrains.SearchStationPage;
+import mobile.utils.AppConfig;
 
-public class MainPage {
+public class MainPage extends BasePage {
 
     private final SelenideAppiumElement
             buttonSideMenu = $(AppiumBy.accessibilityId("Левое боковое меню")),
-            buttonLogin = $(AppiumBy.id("ru.rzd.pass.debug:id/sign_in_text_view")),
-            buttonBasket = $(AppiumBy.id("ru.rzd.pass.debug:id/cart")),
-            buttonExtendedSearch = $(AppiumBy.id("ru.rzd.pass.debug:id/extended_search")),
-            fieldFrom = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[1]")),
-            fieldWhere = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[2]")),
-            buttonSearchTrains = $(AppiumBy.id("ru.rzd.pass.debug:id/search_button")),
-            thereDateHeader =$(AppiumBy.id("ru.rzd.pass.debug:id/there_date_header")),
-            selectDate = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/day\"]"));
+            //buttonLogin = $(AppiumBy.id("ru.rzd.pass.debug:id/sign_in_text_view")),
+            buttonLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/sign_in_text_view")),
+            buttonBasket = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/cart")),
+            buttonExtendedSearch = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/extended_search")),
+            //fieldFrom = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[1]")),
+            //fieldWhere = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"ru.rzd.pass.debug:id/text_view_station\"])[2]")),
+            fieldFrom = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"" + AppConfig.getInstance().getPathToElement() + ":id/text_view_station\"])[1]")),
+            fieldWhere = $(AppiumBy.xpath("(//android.widget.EditText[@resource-id=\"" + AppConfig.getInstance().getPathToElement() + ":id/text_view_station\"])[2]")),
+            buttonSearchTrains = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/search_button")),
+            thereDateHeader =$(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/there_date_header")),
+            //selectDate = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/day\"]"));
+            selectDate = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"" + AppConfig.getInstance().getPathToElement() + ":id/day\"]"));
 
     @Step("Проверка начальных элементов главной страницы")
     public MainPage checkInitElements(){

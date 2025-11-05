@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import mobile.pages.parts.Progressbar;
+import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
@@ -16,17 +17,17 @@ public class SchedulePage {
 
     //Всплывающее окно со списком ДП
     private final SelenideAppiumElement
-            progressCardListTitle = $(AppiumBy.id("ru.rzd.pass.debug:id/progress_card_list_title")),
-            btnDisagreeEcard = $(AppiumBy.id("ru.rzd.pass.debug:id/progress_disagree_ecard"));
+            progressCardListTitle = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/progress_card_list_title")),
+            btnDisagreeEcard = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/progress_disagree_ecard"));
 
     private final SelenideAppiumElement
-            toolBar = $(AppiumBy.id("ru.rzd.pass.debug:id/toolbar")),
+            toolBar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/toolbar")),
             btnBack = $(AppiumBy.accessibilityId("Перейти вверх")),
-            stationFrom = $(AppiumBy.id("ru.rzd.pass.debug:id/station_from")),
-            stationTo = $(AppiumBy.id("ru.rzd.pass.debug:id/station_to")),
-            btnFavourites = $(AppiumBy.id("ru.rzd.pass.debug:id/add_to_favorites")),
-            btnBasket = $(AppiumBy.id("ru.rzd.pass.debug:id/cart")),
-            btnSettings = $(AppiumBy.id("ru.rzd.pass.debug:id/timetable_filter"));
+            stationFrom = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/station_from")),
+            stationTo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/station_to")),
+            btnFavourites = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/add_to_favorites")),
+            btnBasket = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/cart")),
+            btnSettings = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/timetable_filter"));
 
     @Step("Проверка начальных элементов страницы")
     public SchedulePage checkInitElements(){

@@ -34,6 +34,7 @@ public class EnvironmentSelectionPage {
     public EnvironmentSelectionPage selectEnvironment(Contour contour){
         //$(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + contour.getContour() + "']"))
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + contour.getContour() + "']"))
+                .scrollTo()
                 .shouldBe(visible)
                 .click();
         return this;
@@ -42,6 +43,7 @@ public class EnvironmentSelectionPage {
     @Step("Выбор ветки")
     public EnvironmentSelectionPage selectBranch(BranchesCommon branch){
         $(AppiumBy.xpath("//android.widget.RadioButton[@text='"+ branch.getBranch() +"']"))
+                .scrollTo()
                 .shouldBe(visible)
                 .click();
         return this;
@@ -50,6 +52,7 @@ public class EnvironmentSelectionPage {
     @Step("Выбор изолированной ветки")
     public EnvironmentSelectionPage selectIsolatedBranch(String branch){
         $(byText(branch))
+                .scrollTo()
                 .shouldBe(visible)
                 .click();
         return this;

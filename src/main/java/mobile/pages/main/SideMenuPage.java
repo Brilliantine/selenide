@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import mobile.pages.base.BasePage;
 import mobile.pages.passengers.PassengersPage;
+import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
@@ -14,10 +15,9 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class SideMenuPage extends BasePage {
 
-    private final SelenideAppiumElement sideMenu =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/list"));
-    private final SelenideAppiumElement buttonLogin =
-            $(AppiumBy.id("ru.rzd.pass.debug:id/sign_in_out_button"));
+    private final SelenideAppiumElement
+            sideMenu = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/list")),
+            buttonLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/sign_in_out_button"));
 
     @AllArgsConstructor
     public enum MenuItem{

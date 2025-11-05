@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.SearchStationPage;
+import mobile.utils.AppConfig;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,10 +20,10 @@ public class CalendarPage {
     DateTimeFormatter formatter =ofPattern("d MMMM",new Locale("ru"));
 
     private final SelenideAppiumElement
-            toolbar = $(AppiumBy.id("ru.rzd.pass.debug:id/toolbar")),
-            buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continueButton")),
-            oneWayPicker = $(AppiumBy.id("ru.rzd.pass.debug:id/one_way_button")),
-            bothWayPicker = $(AppiumBy.id("ru.rzd.pass.debug:id/both_way_button"));
+            toolbar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/toolbar")),
+            buttonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continueButton")),
+            oneWayPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/one_way_button")),
+            bothWayPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/both_way_button"));
 
     @Step("Проверка начальных элементов страницы")
     public CalendarPage checkInitElements(){

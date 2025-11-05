@@ -3,6 +3,7 @@ package mobile.pages.passengers.parts;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
@@ -13,37 +14,37 @@ public class AddingPassengerPage {
             //Общие элементы страницы
             titlePage = $(byText("Новый пассажир")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад")),
-            formAutoFill = $(AppiumBy.id("ru.rzd.pass.debug:id/fill_from_profile_layout")),
-            btnFillFromProfile = $(AppiumBy.id("ru.rzd.pass.debug:id/fill_from_profile")),
-            btnHideFormAutoFill = $(AppiumBy.id("ru.rzd.pass.debug:id/hide_fill_from_profile")),
-            btnSave = $(AppiumBy.id("ru.rzd.pass.debug:id/save_button")),
+            formAutoFill = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/fill_from_profile_layout")),
+            btnFillFromProfile = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/fill_from_profile")),
+            btnHideFormAutoFill = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/hide_fill_from_profile")),
+            btnSave = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/save_button")),
     //ФИО
-            patronymic = $(AppiumBy.id("ru.rzd.pass.debug:id/patronymic_edit")),
-            name = $(AppiumBy.id("ru.rzd.pass.debug:id/name_edit")),
-            surname = $(AppiumBy.id("ru.rzd.pass.debug:id/surname_edit")),
-            patronymicEmptyCheck = $(AppiumBy.id("ru.rzd.pass.debug:id/patronymicEmptyCheck")),
+            patronymic = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymic_edit")),
+            name = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/name_edit")),
+            surname = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/surname_edit")),
+            patronymicEmptyCheck = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymicEmptyCheck")),
     //Аллерт который появляется при активации чек-бокса без отчества
-            alertTitle = $(AppiumBy.id("ru.rzd.pass.debug:id/alertTitle")),
+            alertTitle = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/alertTitle")),
             alertMessage = $(AppiumBy.id("android:id/message")),
             btnAlertNoPatronymic = $(AppiumBy.id("android:id/button1")),
             btnAlertThereArePatronymic = $(AppiumBy.id("android:id/button2")),
     //Дата, Пол
-            fieldDateBirthday = $(AppiumBy.id("ru.rzd.pass.debug:id/etDateBirth")),
-            listGender = $(AppiumBy.id("ru.rzd.pass.debug:id/gender")),
+            fieldDateBirthday = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/etDateBirth")),
+            listGender = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/gender")),
     //Документ
-            documentView = $(AppiumBy.id("ru.rzd.pass.debug:id/document_view")),
-            addNewDocument = $(AppiumBy.id("ru.rzd.pass.debug:id/empty")),
+            documentView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/document_view")),
+            addNewDocument = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/empty")),
     //Бонусные карты
-            btnAddCard = $(AppiumBy.id("ru.rzd.pass.debug:id/addCardButton")),
+            btnAddCard = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/addCardButton")),
     //Контактные данные
-            fieldMail = $(AppiumBy.id("ru.rzd.pass.debug:id/emailEditText")),
-            fieldPhone = $(AppiumBy.id("ru.rzd.pass.debug:id/phoneEditText")),
-            noPhoneDisclamer = $(AppiumBy.id("ru.rzd.pass.debug:id/noPhoneDisclamer")),
+            fieldMail = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/emailEditText")),
+            fieldPhone = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/phoneEditText")),
+            noPhoneDisclamer = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/noPhoneDisclamer")),
     //Доп поля
-            formAdditionally = $(AppiumBy.id("ru.rzd.pass.debug:id/tvReservationAdditionalExpand")),
-            snils = $(AppiumBy.id("ru.rzd.pass.debug:id/snils_edit")),
-            chbDependent = $(AppiumBy.id("ru.rzd.pass.debug:id/chbDependent")),
-            chbInvalid = $(AppiumBy.id("ru.rzd.pass.debug:id/chbInvalid"));
+            formAdditionally = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tvReservationAdditionalExpand")),
+            snils = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/snils_edit")),
+            chbDependent = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbDependent")),
+            chbInvalid = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbInvalid"));
 
     @Step("Проверка начальных элементов страницы 'Новый пассажир'")
     public AddingPassengerPage checkInitElements(){
