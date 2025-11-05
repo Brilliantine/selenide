@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 //import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import lombok.extern.slf4j.Slf4j;
+import mobile.permission.PermissionManager;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -65,6 +66,9 @@ public class Initializer {
             UiAutomator2Options options = getOptoins();
             driver =new AndroidDriver(appiumServerURL,options);
             log.info("🚀 Драйвер успешно инициализирован");
+            //Выдача разрешений через ADB
+            PermissionManager.grantPermission();
+
         }catch (Exception e){
             log.error(e.getMessage());
             throw new RuntimeException(e);

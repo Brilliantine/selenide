@@ -68,16 +68,16 @@ public class AppConfig {
 
     //Получаем пакет приложения в виде строки
     public String getAppPackage() {
-        /*switch (serverType) {
+        switch (serverType) {
             case ADAPTER:
                 return config.getProperty("appPackageAdapter");
             case PROD:
                 return config.getProperty("appPackageProd");
             default:
                 return config.getProperty("appPackage");
-        }*/
+        }
         //Временный код для отладки:
-        String pkg;
+        /*String pkg;
         switch (serverType){
             case ADAPTER:
                 pkg = config.getProperty("appPackageAdapter");
@@ -89,7 +89,7 @@ public class AppConfig {
                 pkg = config.getProperty("appPackage");
         }
         System.out.println("📦 Используется пакет: " + pkg);
-        return pkg;
+        return pkg;*/
     }
 
     public String getProperty(String key) {
