@@ -38,7 +38,7 @@ public class Onbording {
         }
 
         AgreementKasperskyPage agreementKasperskyPage = new AgreementKasperskyPage();
-        if(agreementPage.isPageDisplayed()){
+        if(agreementKasperskyPage.isPageDisplayed()){
             agreementKasperskyPage
                     .checkInitElements()
                     .tapAcceptButton();
