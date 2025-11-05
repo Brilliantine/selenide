@@ -7,6 +7,7 @@ import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.SearchStationPage;
 import mobile.utils.AppConfig;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -17,13 +18,15 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 
 public class CalendarPage {
 
-    DateTimeFormatter formatter =ofPattern("d MMMM",new Locale("ru"));
+    DateTimeFormatter formatter =ofPattern("dd MMMM",new Locale("ru"));
+    LocalDate today = LocalDate.now();
 
     private final SelenideAppiumElement
             toolbar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/toolbar")),
             buttonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continueButton")),
             oneWayPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/one_way_button")),
-            bothWayPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/both_way_button"));
+            bothWayPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/both_way_button")),
+            swapElement = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+ ":id/swap"));
 
     @Step("Проверка начальных элементов страницы")
     public CalendarPage checkInitElements(){
@@ -34,17 +37,56 @@ public class CalendarPage {
         return this;
     }
 
-    public void clickOneDate(LocalDate date){
-        $(AppiumBy.xpath("//android.view.View[contains(@content-desc, '" +date.format(formatter)+"')]"))
-                .shouldBe(visible)
-                .click();
+    //Получить отформатированную дату для локатора
+    public String getFormattedDate(LocalDate date){
+        return date.format(formatter);
     }
 
-    @Step("Выбор даты: {date}")
+    //Клик по дате
+    public void clickDate(LocalDate date){
+        //$(AppiumBy.xpath("//android.view.View[contains(@content-desc, '" +date.format(formatter)+"')]");
+
+        String formatedDate = getFormattedDate(date);
+        SelenideAppiumElement dateElement = $(AppiumBy.accessibilityId(formatedDate));
+
+        System.out.println(date.format(formatter));
+
+        if(dateElement.is(visible)){
+            dateElement.click();
+        }
+        else {
+            dateElement
+                    .scrollTo()
+                    .shouldBe(visible, Duration.ofSeconds(5))
+                    .click();
+        }
+    }
+
+    //Клик по дате в одну сторону
+    public void clickOneDate(LocalDate date){
+
+        if (!swapElement.is(visible)){
+            System.out.println("иконки свайпа нет на экране");
+            clickDate(date);
+        }else {
+            oneWayPicker.click();
+            clickDate(date);
+        }
+
+    }
+
+    @Step("Выбор одной даты: {date}")
     public CalendarPage selectDate(LocalDate date){
         clickOneDate(date);
         return this;
     }
+
+    @Step("Выбор одной даты через {days} дней от текущей")
+    public CalendarPage selectDateFromToday(int days){
+        clickOneDate(today.plusDays(days));
+        return this;
+    }
+
 
     @Step("Нажать на кнопку ПРОДОЛЖИТЬ")
     public SchedulePage clickContinue(){

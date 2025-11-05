@@ -5,6 +5,8 @@ import mobile.pages.onbording.LanguageSelectionPage;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
+import java.time.LocalDate;
+
 import static mobile.enums.Contour.BRANCHES;
 import static mobile.enums.Language.RUSSIAN;
 
@@ -31,7 +33,10 @@ public class DebugTest extends BaseTest {
                 .tapButtonClose()
                 .checkInitElements()
                 .openCalendar()
-                .checkInitElements();
+                .checkInitElements()
+                //.selectDate(LocalDate.now().plusDays(5)),
+                .selectDateFromToday(72)
+                .clickContinue();
 
     }
 }
