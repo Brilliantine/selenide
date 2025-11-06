@@ -54,9 +54,15 @@ public class LoginHelper {
 
     //Навигация на главном экране
     public static void navigateToMainPage(){
-        if(isOnMainPage() && needsAuthorization()){
-            new MainPage()
-                    .tapButtonLogin();
+        if(isOnMainPage()){
+            if(needsAuthorization()){
+                new MainPage()
+                        .tapButtonLogin();
+            }else {
+                log.info("Вы уже авторизованы");
+            }
+        }else {
+            log.info("Вы находитесь не на главном экране");
         }
     }
     //Проверка открыт экран зашиты входа или главный экран
