@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import mobile.pages.main.MainPage;
 import mobile.utils.AppConfig;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -16,7 +18,8 @@ public class ProtectedPage {
             //checkboxDontUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Не защищать вход в приложение\"]")),
             checkboxUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Не защищать вход в приложение\"]")),
             checkboxDontUsePinCode = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Не защищать вход в приложение\"]")),
-            butonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continue_button"));
+            butonNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/continue_button")),
+            title = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/title"));
 
     @Step("Проверка начальных элементов страницы защиты входа")
     public ProtectedPage checkInitElements(){
@@ -48,5 +51,9 @@ public class ProtectedPage {
     public PinCodePage proceedToProtectionSetup(){
         butonNext.shouldBe(visible).click();
         return new PinCodePage();
+    }
+
+    public boolean isPageDisplayed(){
+        return title.is(visible, Duration.ofSeconds(5));
     }
 }

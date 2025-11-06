@@ -1,21 +1,17 @@
 package tests.debugging;
 
+import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
-import mobile.pages.onbording.LanguageSelectionPage;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
-
-import java.time.LocalDate;
-
-import static mobile.enums.Contour.BRANCHES;
-import static mobile.enums.Language.RUSSIAN;
 
 public class DebugTest extends BaseTest {
 
     @Test
     public void debug(){
-        //Onbording.completeOnboarding();
-        LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
+        Onbording.completeOnboarding();
+        LoginHelper.authorization();
+        /*LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()
                 .languageSelection()
@@ -36,7 +32,7 @@ public class DebugTest extends BaseTest {
                 .checkInitElements()
                 //.selectDate(LocalDate.now().plusDays(5)),
                 .selectDateFromToday(72)
-                .clickContinue();
+                .clickContinue();*/
 
     }
 }

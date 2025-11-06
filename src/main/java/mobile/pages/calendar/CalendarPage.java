@@ -62,7 +62,7 @@ public class CalendarPage {
         }
     }
 
-    //Клик по дате в одну сторону
+    //Поиск даты в одну сторону
     public void clickOneDate(LocalDate date){
 
         if (!swapElement.is(visible)){

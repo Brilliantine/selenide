@@ -12,6 +12,8 @@ import mobile.pages.login.LoginPage;
 import mobile.pages.searchTrains.SearchStationPage;
 import mobile.utils.AppConfig;
 
+import java.time.Duration;
+
 public class MainPage extends BasePage {
 
     private final SelenideAppiumElement
@@ -73,5 +75,14 @@ public class MainPage extends BasePage {
     public MainPage checkUserIsLoggedIn(){
         buttonLogin.shouldNotBe(visible);
         return this;
+    }
+
+    @Step("Проверяем что открыт главный экран")
+    public boolean isPageDisplayed(){
+        return fieldFrom.is(visible, Duration.ofSeconds(2)) && fieldWhere.is(visible,Duration.ofSeconds(2));
+    }
+
+    public boolean isButtonLoginDisplayed(){
+        return buttonLogin.is(visible, Duration.ofSeconds(5));
     }
 }

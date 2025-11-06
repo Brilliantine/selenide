@@ -16,7 +16,8 @@ public class LoginPage {
     private SelenideAppiumElement
             inputLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/login")),
             inputPassword = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/password")),
-            buttonLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/avatar")),
+            //buttonLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/avatar")),
+            buttonLogin = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+ ":id/sign_in_btn")),
             checkboxSaveAuth = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/agreementLoginSaveAuth")),
             buttonOfferta = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/offerta")),
             buttonRecoveryPassword = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/recovery_login_btn")),
@@ -48,5 +49,12 @@ public class LoginPage {
     public MainPage tapButtonLoginAndProceedToMainPage(){
         buttonLogin.shouldBe(visible).click();
         return new MainPage();
+    }
+
+    @Step("Нажимаем на кнопку Войти")
+    public void tapButtonLogin(){
+        buttonLogin
+                .shouldBe(visible)
+                .click();
     }
 }
