@@ -16,14 +16,10 @@ public class LoginHelper {
 
     public static boolean authorization(){
         try {
-            if(isOnMainPage()){
-                navigateToMainPage();
-                performLogin();
-                Progressbar.waitLoading();
-                handleProtectionIfNeeded();
-            }else {
-                log.info("Открыт не главный экран");
-            }
+            navigateToMainPage();
+            performLogin();
+            Progressbar.waitLoading();
+            handleProtectionIfNeeded();
             return verifySuccessfulLogin();
         }catch (Exception e){
             log.error("Ошибка авторизации: {}", e.getMessage());
@@ -58,8 +54,10 @@ public class LoginHelper {
 
     //Навигация на главном экране
     public static void navigateToMainPage(){
-        new MainPage()
-                .tapButtonLogin();
+        if(isOnMainPage() && needsAuthorization()){
+            new MainPage()
+                    .tapButtonLogin();
+        }
     }
     //Проверка открыт экран зашиты входа или главный экран
     public static void handleProtectionIfNeeded() {
