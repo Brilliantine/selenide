@@ -34,6 +34,7 @@ public class LoginPage {
 
     @Step("Вводим логин и пароль")
     public LoginPage setLoginAndPassword(AddUserData userData){
+        inputLogin.clear();
         inputLogin.setValue(userData.getLogin());
         inputPassword.setValue(userData.getUserPassword());
         return this;

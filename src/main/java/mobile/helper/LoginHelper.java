@@ -65,7 +65,7 @@ public class LoginHelper {
             log.info("Вы находитесь не на главном экране");
         }
     }
-    //Проверка открыт экран зашиты входа или главный экран
+    //Проверка открыт экран защиты входа или главный экран
     public static void handleProtectionIfNeeded() {
         ProtectedPage protectedPage = new ProtectedPage();
         MainPage mainPage = new MainPage();
