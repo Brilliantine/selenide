@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.pages.calendar.CalendarPage;
 import mobile.pages.login.LoginPage;
+import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.SearchStationPage;
 import mobile.utils.AppConfig;
 
@@ -82,7 +83,16 @@ public class MainPage extends BasePage {
         return fieldFrom.is(visible, Duration.ofSeconds(2)) && fieldWhere.is(visible,Duration.ofSeconds(2));
     }
 
+    @Step("Проверка отображается ли кнопка Войти")
     public boolean isButtonLoginDisplayed(){
         return buttonLogin.is(visible, Duration.ofSeconds(5));
+    }
+
+    @Step("Нажать на кнопку поиска")
+    public SchedulePage tapButtonSearchTrains(){
+        buttonSearchTrains
+                .shouldBe(visible)
+                .click();
+        return new SchedulePage();
     }
 }

@@ -2,6 +2,7 @@ package tests.debugging;
 
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
+import mobile.pages.main.MainPage;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
@@ -10,7 +11,17 @@ public class DebugTest extends BaseTest {
     @Test
     public void debug(){
         Onbording.completeOnboarding();
-        LoginHelper.authorization();
+        //LoginHelper.authorization();
+        MainPage mainPage = new MainPage();
+        mainPage
+                .searchStationFromPage()
+                //.checkInitElements()
+                .setStation("КАЗАН")
+                .clickOnStation("КАЗАНЬ")
+                .searchStationWherePage()
+                .setStation("МОСКВ")
+                .clickOnStation("МОСКВА")
+                .tapButtonSearchTrains();
         /*LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()

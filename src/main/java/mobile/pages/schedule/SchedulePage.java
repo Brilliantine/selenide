@@ -29,7 +29,7 @@ public class SchedulePage {
             btnBasket = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/cart")),
             btnSettings = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/timetable_filter"));
 
-    @Step("Проверка начальных элементов страницы")
+    @Step("Проверка начальных элементов страницы Расписания")
     public SchedulePage checkInitElements(){
         toolBar.shouldBe(visible);
         btnBack.shouldBe(visible);

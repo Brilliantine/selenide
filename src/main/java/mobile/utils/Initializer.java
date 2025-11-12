@@ -55,7 +55,8 @@ public class Initializer {
                 .setPlatformName(AppConfig.getInstance().getProperty("platformName"))
                 .setAutomationName(AppConfig.getInstance().getProperty("automationName"))
                 .setAppPackage(AppConfig.getInstance().getAppPackage())
-                .setAppActivity(AppConfig.getInstance().getProperty("appActivity"));
+                .setAppActivity(AppConfig.getInstance().getProperty("appActivity"))
+                .disableWindowAnimation();
     }
 
     public static void initDriver(){
