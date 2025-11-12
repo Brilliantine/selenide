@@ -24,11 +24,11 @@ public class BaseTest {
     }
 
     public void configureSelenideForAppium(){
-        Configuration.timeout = 15000;
-        Configuration.pageLoadTimeout = 15000;
-        Configuration.pollingInterval = 200;
+        Configuration.timeout = 5000;
+        Configuration.pageLoadTimeout = 5000;
+        Configuration.pollingInterval = 100;
         Configuration.browserSize = null;
-        Configuration.remoteReadTimeout = 15000;
+        Configuration.remoteReadTimeout = 5000;
     }
 
     @AfterEach

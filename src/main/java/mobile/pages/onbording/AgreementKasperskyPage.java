@@ -7,6 +7,7 @@ import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -18,7 +19,8 @@ public class AgreementKasperskyPage {
             $(AppiumBy.id("ru.rzd.pass.debug:id/accept_button"));
     private final SelenideAppiumElement declineButton =
             $(AppiumBy.id("ru.rzd.pass.debug:id/cancel_button"));*/
-    private final SelenideAppiumElement title = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/title_text_view")),
+    private final SelenideAppiumElement
+            title = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/title_text_view")),
             acceptButton = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/accept_button")),
             declineButton = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/cancel_button"));
 
@@ -33,6 +35,8 @@ public class AgreementKasperskyPage {
     @Step("Приниммаем соглашение касперского и переходим к туториалу")
     public TutorialPage tapAcceptButton(){
         acceptButton
+                .shouldBe(visible)
+                .shouldBe(clickable)
                 .click();
         return new TutorialPage();
     }
@@ -40,6 +44,7 @@ public class AgreementKasperskyPage {
     @Step("Не принимаем соглашение касперского")
     public TutorialPage tapDeclineButton(){
         declineButton
+                .shouldBe(visible)
                 .click();
         return new TutorialPage();
     }

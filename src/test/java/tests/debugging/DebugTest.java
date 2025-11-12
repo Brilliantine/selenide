@@ -1,6 +1,5 @@
 package tests.debugging;
 
-import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.pages.main.MainPage;
 import org.junit.jupiter.api.Test;
@@ -17,10 +16,14 @@ public class DebugTest extends BaseTest {
                 .searchStationFromPage()
                 //.checkInitElements()
                 .setStation("КАЗАН")
-                .clickOnStation("КАЗАНЬ")
+                //.clickOnStation("КАЗАНЬ")
+                .castomClickOnStation("КАЗАНЬ")
+                //.castomFastClickOnStation("КАЗАНЬ")
                 .searchStationWherePage()
                 .setStation("МОСКВ")
-                .clickOnStation("МОСКВА")
+                //.clickOnStation("МОСКВА")
+                .castomClickOnStation("МОСКВА")
+                //.castomFastClickOnStation("МОСКВА")
                 .tapButtonSearchTrains();
         /*LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage

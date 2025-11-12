@@ -17,15 +17,15 @@ import java.util.Map;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class BasePage {
-    protected WebDriverWait wait = new WebDriverWait(Initializer.getDriver(), Duration.ofSeconds(10));
+    protected WebDriverWait wait = new WebDriverWait(Initializer.getDriver(), Duration.ofSeconds(2));
 
-    //Ждем кликабельность элемента и возвращаем его
-    public WebElement waitForClickable(By locator){
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    //Ждем элемент и возвращаем его
+    public WebElement waitForVisible(By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     //Клик с ожиданием
     protected void waitAndClick(By locator){
-        waitForClickable(locator).click();
+        waitForVisible(locator).click();
     }
     //Скролл нужно дорабатывать
     protected void scrollToElement(String value){

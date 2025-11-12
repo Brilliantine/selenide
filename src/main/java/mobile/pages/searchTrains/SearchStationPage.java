@@ -1,12 +1,13 @@
 package mobile.pages.searchTrains;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.pages.main.MainPage;
 import mobile.utils.AppConfig;
+import mobile.utils.Initializer;
+import org.openqa.selenium.By;
 
 import java.time.Duration;
 import java.util.Date;
@@ -37,6 +38,23 @@ public class SearchStationPage extends BasePage {
         return this;
     }
 
+    @Step("Нажать на станцию: {value}")
+    public MainPage castomClickOnStation(String value){
+        By station = By.xpath("//*[@text='" + value + "']");
+        waitAndClick(station);
+        return new MainPage();
+    }
+    public MainPage castomFastClickOnStation(String value){
+        try {
+            Thread.sleep(2000);
+            Initializer.getDriver()
+                    .findElement(By.xpath("//*[@text='" + value + "']"))
+                    .click();
+        }catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
+        return new MainPage();
+    }
     @Step("Выбрать станцию")
     public MainPage clickOnStation(String value){
         //Configuration.timeout = 10000;
