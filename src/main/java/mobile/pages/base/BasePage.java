@@ -28,7 +28,7 @@ public class BasePage {
         waitForVisible(locator).click();
     }
     //Скролл нужно дорабатывать
-    protected void scrollToElement(String value){
+    protected void scrollToElement(String xpath){
         //Максимальное количество скроллов
         int maxScroll = 5;
 
@@ -40,7 +40,7 @@ public class BasePage {
             int screenHeight = screenSize.getHeight(); //Высота
 
             try{
-                SelenideAppiumElement elementXpath = $(AppiumBy.xpath(value));
+                SelenideAppiumElement elementXpath = $(AppiumBy.xpath(xpath));
                 return;
             } catch (NoSuchElementException e) {
                 //Параметры для скролла

@@ -34,7 +34,6 @@ public class EnvironmentSelectionPage {
     public EnvironmentSelectionPage selectEnvironment(Contour contour){
         //$(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + contour.getContour() + "']"))
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + contour.getContour() + "']"))
-                .scrollTo()
                 .shouldBe(visible)
                 .click();
         return this;

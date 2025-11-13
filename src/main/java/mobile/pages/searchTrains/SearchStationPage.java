@@ -38,12 +38,16 @@ public class SearchStationPage extends BasePage {
         return this;
     }
 
+    //Данный метод при тесте занимает около 1 минуты
     @Step("Нажать на станцию: {value}")
     public MainPage castomClickOnStation(String value){
-        By station = By.xpath("//*[@text='" + value + "']");
+        By station = By.xpath("//android.widget.TextView[@resource-id='" +
+                AppConfig.getInstance().getPathToElement() +
+                ":id/tvTitle' and @text='" + value + "']");
         waitAndClick(station);
         return new MainPage();
     }
+    //Метод не стабильный. Писал только в рамках изучения куда сливается время при клике на станцию
     public MainPage castomFastClickOnStation(String value){
         try {
             Thread.sleep(2000);
@@ -55,11 +59,10 @@ public class SearchStationPage extends BasePage {
         }
         return new MainPage();
     }
+
+    //Вывод времени добавлял для отладки. При тесте данный метод занимает 2-3 минуты
     @Step("Выбрать станцию")
     public MainPage clickOnStation(String value){
-        //Configuration.timeout = 10000;
-        //Configuration.pollingInterval = 100;
-
         long startTime = System.currentTimeMillis();
 
         System.out.println("=== НАЧАЛО ПОИСКА СТАНЦИИ ===");
@@ -79,24 +82,6 @@ public class SearchStationPage extends BasePage {
         } else {
             System.out.println("Станция не найдена: " + (System.currentTimeMillis() - startTime) + "ms");
         }
-
-        /*SelenideAppiumElement stationElement = $(byText(value));
-        if(stationElement.is(visible, Duration.ofSeconds(5))){
-            System.out.println("Станция найдена");
-            stationElement.click();
-        }else {
-            System.out.println("Станция не найдена");
-        }
-
-        SelenideAppiumElement
-                firstStation = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.LinearLayout\").instance(8)")),
-                exactMatch = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + value + "\")"));
-                //exactMatch = $(AppiumBy.xpath("//android.widget.TextView[@resource-id='" +AppConfig.getInstance().getPathToElement() + ":id/tvTitle' and @text='" + value + "']"));
-        firstStation
-                .shouldBe(visible, Duration.ofSeconds(10));
-        exactMatch
-                .shouldBe(visible)
-                .click();*/
         return new MainPage();
     }
 }

@@ -1,5 +1,6 @@
 package mobile.pages.main;
 
+import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
@@ -50,7 +51,9 @@ public class MainPage extends BasePage {
 
     @Step("Нажать на кнопку Войти")
     public LoginPage tapButtonLogin(){
-        buttonLogin.shouldBe(visible).click();
+        buttonLogin
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .click();
         return new LoginPage();
     }
 
@@ -80,12 +83,12 @@ public class MainPage extends BasePage {
 
     @Step("Проверяем что открыт главный экран")
     public boolean isPageDisplayed(){
-        return fieldFrom.is(visible, Duration.ofSeconds(2)) && fieldWhere.is(visible,Duration.ofSeconds(2));
+        return buttonSearchTrains.is(visible);
     }
 
     @Step("Проверка отображается ли кнопка Войти")
     public boolean isButtonLoginDisplayed(){
-        return buttonLogin.is(visible, Duration.ofSeconds(5));
+        return buttonLogin.is(visible);
     }
 
     @Step("Нажать на кнопку поиска")
