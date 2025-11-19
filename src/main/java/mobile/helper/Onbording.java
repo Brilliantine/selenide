@@ -1,9 +1,8 @@
 package mobile.helper;
 
 import lombok.extern.slf4j.Slf4j;
-import mobile.enums.BranchesCommon;
-import mobile.enums.Contour;
 import mobile.enums.Language;
+import mobile.pages.main.MainPage;
 import mobile.pages.onbording.*;
 
 @Slf4j
@@ -41,7 +40,7 @@ public class Onbording {
         if(agreementKasperskyPage.isPageDisplayed()){
             agreementKasperskyPage
                     .checkInitElements()
-                    .tapAcceptButton();
+                    .clickAcceptButton();
         }
 
         TutorialPage tutorialPage = new TutorialPage();
@@ -50,5 +49,8 @@ public class Onbording {
                     .checkInitElements()
                     .tapButtonClose();
         }
+
+        MainPage mainPage = new MainPage();
+        mainPage.isPageDisplayed();
     }
 }

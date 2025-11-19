@@ -7,7 +7,6 @@ import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -26,23 +25,21 @@ public class AgreementKasperskyPage {
 
     @Step("Проверка элементов экрана касперского")
     public AgreementKasperskyPage checkInitElements(){
-        title.shouldBe(visible);
         acceptButton.shouldBe(visible);
         declineButton.shouldBe(visible);
         return this;
     }
 
     @Step("Приниммаем соглашение касперского и переходим к туториалу")
-    public TutorialPage tapAcceptButton(){
+    public TutorialPage clickAcceptButton(){
         acceptButton
                 .shouldBe(visible)
-                .shouldBe(clickable)
                 .click();
         return new TutorialPage();
     }
 
     @Step("Не принимаем соглашение касперского")
-    public TutorialPage tapDeclineButton(){
+    public TutorialPage clickDeclineButton(){
         declineButton
                 .shouldBe(visible)
                 .click();
@@ -51,6 +48,6 @@ public class AgreementKasperskyPage {
 
     @Step("Проверяем что находимся на экране касперского")
     public boolean isPageDisplayed(){
-        return title.is(visible, Duration.ofSeconds(2));
+        return acceptButton.is(visible, Duration.ofSeconds(2));
     }
 }

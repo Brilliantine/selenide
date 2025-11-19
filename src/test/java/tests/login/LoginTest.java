@@ -33,7 +33,7 @@ public class LoginTest extends BaseTest {
                 .checkInitElements()
                 .tapAcceptButton()
                 .checkInitElements()
-                .tapAcceptButton()
+                .clickAcceptButton()
                 .checkInitElements()
                 .swipeToEndTutorial()
                 .tapButtonClose()

@@ -12,9 +12,14 @@ public class DebugTest extends BaseTest {
     public void debug(){
         Onbording.completeOnboarding();
         MainPage mainPage = new MainPage();
-        mainPage.isPageDisplayed();
-        LoginHelper.authorization();
+        //LoginHelper.authorization();
         mainPage
+                .clickButtonExtendedSearch()
+                .checkInitElements()
+                .clickFieldCarrier()
+                .clickCarrier("ДОСС")
+                .selectTrainBrand("Сапсан");
+        /*mainPage
                 .searchStationFromPage()
                 .checkInitElements()
                 .setStation("КАЗАНЬ")
@@ -22,7 +27,7 @@ public class DebugTest extends BaseTest {
                 .searchStationWherePage()
                 .setStation("МОСКВА")
                 .castomClickOnStation("МОСКВА")
-                .tapButtonSearchTrains();
+                .tapButtonSearchTrains();*/
         /*LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
                 .checkInitElements()

@@ -11,6 +11,7 @@ import mobile.pages.base.BasePage;
 import mobile.pages.calendar.CalendarPage;
 import mobile.pages.login.LoginPage;
 import mobile.pages.schedule.SchedulePage;
+import mobile.pages.searchTrains.ExtendedSearchPage;
 import mobile.pages.searchTrains.SearchStationPage;
 import mobile.utils.AppConfig;
 
@@ -97,5 +98,13 @@ public class MainPage extends BasePage {
                 .shouldBe(visible)
                 .click();
         return new SchedulePage();
+    }
+
+    @Step("Нажать на кнопку расширенного поиска")
+    public ExtendedSearchPage clickButtonExtendedSearch(){
+        buttonExtendedSearch
+                .shouldBe(visible)
+                .click();
+        return new ExtendedSearchPage();
     }
 }
