@@ -12,13 +12,16 @@ public class DebugTest extends BaseTest {
     public void debug(){
         Onbording.completeOnboarding();
         MainPage mainPage = new MainPage();
-        //LoginHelper.authorization();
+        mainPage.isPageDisplayed();
         mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
-                .clickFieldCarrier()
-                .clickCarrier("ДОСС")
-                .selectTrainBrand("Сапсан");
+                //.selectTicketsOnly()
+                .selectConnection()
+                .selectService("Вагон для перевозки автомобиля");
+                //.clickFieldCarrier()
+                //.sscrrl();
+        //LoginHelper.authorization();
         /*mainPage
                 .searchStationFromPage()
                 .checkInitElements()

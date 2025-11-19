@@ -27,7 +27,7 @@ public class ExtendedSearchPage extends BasePage {
             btnClear = $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"" + AppConfig.getInstance().getPathToElement() + ":id/clear\"]")),
             сbTrains = $(AppiumBy.accessibilityId("Фильтр поездов")),
             сbSuburbanTrain = $(AppiumBy.accessibilityId("Фильтр электричек")),
-            сbTicketsOnly = $(AppiumBy.accessibilityId("Фильтр с билетами")),
+            cbTicketsOnly = $(AppiumBy.accessibilityId("Фильтр с билетами")),
             cbConnection = $(AppiumBy.accessibilityId("Фильтр с пересадками")),
             cbUsePoints = $(AppiumBy.accessibilityId("Можно купить за\\nбонусные баллы")),
             cbBusinessPass = $(AppiumBy.accessibilityId("Можно оплатить деловым проездным")),
@@ -91,26 +91,24 @@ public class ExtendedSearchPage extends BasePage {
 
     @Step("Активировать чек-бокс 'Только с билетами'")
     public ExtendedSearchPage selectTicketsOnly(){
-        сbTicketsOnly
-                .shouldBe(visible)
-                .click();
-        verifyCheckboxIsChecked(сbTicketsOnly);
+        isElementSafeToClick(cbTicketsOnly);
+        verifyCheckboxIsChecked(cbTicketsOnly);
         return this;
     }
 
     @Step("Активировать чек-бокс 'С пересадками'")
     public ExtendedSearchPage selectConnection(){
-        cbConnection
-                .shouldBe(visible)
-                .click();
-        verifyCheckboxIsChecked(сbTicketsOnly);
+        isElementSafeToClick(cbConnection);
+        verifyCheckboxIsChecked(cbConnection);
         return this;
     }
 
     @Step("Выбрать услугу: {service}")
     public ExtendedSearchPage selectService(String service){
         SelenideAppiumElement elementService = $(byText(service));
-        selectServices
+        isElementSafeToClick(selectServices);
+        isElementSafeToClick(elementService);
+        /*selectServices
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
@@ -120,7 +118,7 @@ public class ExtendedSearchPage extends BasePage {
             elementService
                     .scrollTo()
                     .click();
-        }
+        }*/
 
         verifyCheckboxIsChecked(elementService);
 
@@ -197,5 +195,14 @@ public class ExtendedSearchPage extends BasePage {
         clickFieldTrainBrand();
         clickTrainBrand(brand);
         return this;
+    }
+    //Метод желательно доработать. Используется пока что как костыль
+    @Step("Проверяем что нужный элемент не находится под кнопкой 'Найти поезд' и по нему можно кликнуть ")
+    public void isElementSafeToClick(SelenideAppiumElement element){
+        element.scrollTo();
+        if(element.is(interactable)){
+            scrollAwayFromSticky();
+        }
+        element.click();
     }
 }
