@@ -16,11 +16,11 @@ public class DebugTest extends BaseTest {
         mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
-                //.selectTicketsOnly()
+                .selectTicketsOnly()
                 .selectConnection()
-                .selectService("Вагон для перевозки автомобиля");
-                //.clickFieldCarrier()
-                //.sscrrl();
+                .selectCarrier("ДОСС")
+                .selectTrainBrand("Сапсан");
+                //.selectService("Вагон для перевозки автомобиля");
         //LoginHelper.authorization();
         /*mainPage
                 .searchStationFromPage()

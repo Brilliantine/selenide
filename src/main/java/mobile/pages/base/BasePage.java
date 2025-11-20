@@ -28,8 +28,8 @@ public class BasePage {
         waitForVisible(locator).click();
     }
 
-    // Простой скролл вниз, чтобы уйти от sticky кнопки
-    public void scrollAwayFromSticky() {
+    // Простой скролл вниз
+    public void shortScroll() {
         Dimension screenSize = Initializer.getDriver().manage().window().getSize();
         int screenWidth = screenSize.getWidth(); //Ширина
         int screenHeight = screenSize.getHeight(); //Высота
@@ -39,7 +39,7 @@ public class BasePage {
                 "width",screenWidth*8/10,
                 "height",screenHeight/2,
                 "direction", "down",
-                "percent", 0.4 // 40% скролл
+                "percent", 0.3
         );
         Initializer.getDriver().executeScript("mobile: scrollGesture", params);
     }

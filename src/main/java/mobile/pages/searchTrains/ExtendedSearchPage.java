@@ -108,18 +108,6 @@ public class ExtendedSearchPage extends BasePage {
         SelenideAppiumElement elementService = $(byText(service));
         isElementSafeToClick(selectServices);
         isElementSafeToClick(elementService);
-        /*selectServices
-                .scrollTo()
-                .shouldBe(visible)
-                .click();
-        if(elementService.is(visible)){
-            elementService.click();
-        }else {
-            elementService
-                    .scrollTo()
-                    .click();
-        }*/
-
         verifyCheckboxIsChecked(elementService);
 
         return this;
@@ -131,31 +119,15 @@ public class ExtendedSearchPage extends BasePage {
     }
 
     @Step("Нажать на поле 'Перевозчик'")
-    public ExtendedSearchPage clickFieldCarrier(){
-        if(selectCarrier.is(visible)){
-            selectCarrier.click();
-        }else {
-            selectCarrier
-                    .scrollTo()
-                    .shouldBe(visible)
-                    .click();
-        }
-        return this;
+    public void clickFieldCarrier(){
+        isElementSafeToClick(selectCarrier);
     }
 
     @Step("Выбрать перевозчика '{carrier}'")
-    public ExtendedSearchPage clickCarrier(String carrier){
+    public void clickCarrier(String carrier){
         SelenideAppiumElement carrierElement = $(AppiumBy.accessibilityId(carrier));
-        if(carrierElement.is(visible)){
-            carrierElement.click();
-        }else {
-            carrierElement
-                    .scrollTo()
-                    .shouldBe(visible)
-                    .click();
-        }
+        isElementSafeToClick(carrierElement);
         verifyCheckboxIsChecked(carrierElement);
-        return this;
     }
 
     public ExtendedSearchPage selectCarrier(String carrier){
@@ -166,28 +138,13 @@ public class ExtendedSearchPage extends BasePage {
 
     @Step("Нажать на поле 'Бренд плезда'")
     public void clickFieldTrainBrand(){
-        if(selectTrainBrand.is(visible)){
-            selectTrainBrand
-                    .click();
-        }else {
-            selectTrainBrand
-                    .scrollTo()
-                    .shouldBe(visible)
-                    .click();
-        }
+        isElementSafeToClick(selectTrainBrand);
     }
 
     @Step("Выбрать бренд поезда 'trainBrand'")
     public void clickTrainBrand(String brand){
         SelenideAppiumElement brandElement = $(AppiumBy.accessibilityId(brand));
-        if(brandElement.is(visible)){
-            brandElement.click();
-        }else {
-            brandElement
-                    .scrollTo()
-                    .shouldBe(visible)
-                    .click();
-        }
+        isElementSafeToClick(brandElement);
         verifyCheckboxIsChecked(brandElement);
     }
 
@@ -196,13 +153,13 @@ public class ExtendedSearchPage extends BasePage {
         clickTrainBrand(brand);
         return this;
     }
-    //Метод желательно доработать. Используется пока что как костыль
-    @Step("Проверяем что нужный элемент не находится под кнопкой 'Найти поезд' и по нему можно кликнуть ")
+    //Метод для обхода кнопки поиска поезда и безопасного клика по нужному элементу
     public void isElementSafeToClick(SelenideAppiumElement element){
-        element.scrollTo();
-        if(element.is(interactable)){
-            scrollAwayFromSticky();
+        if(!element.is(visible)){
+            element.scrollTo();
         }
+        element.shouldBe(visible);
+        shortScroll();
         element.click();
     }
 }

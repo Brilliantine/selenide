@@ -10,12 +10,16 @@ public class Onbording {
 
     public static void completeOnboarding(){
         LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
-        if(languageSelectionPage.isPageDisplayed()){
+        languageSelectionPage
+                .checkInitElements()
+                .languageSelection(Language.RUSSIAN)
+                .tapButtonNext();
+        /*if(languageSelectionPage.isPageDisplayed()){
             languageSelectionPage
                     .checkInitElements()
                     .languageSelection(Language.RUSSIAN)
                     .tapButtonNext();
-        }
+        }*/
 
         EnvironmentSelectionPage environmentSelectionPage = new EnvironmentSelectionPage();
         if(environmentSelectionPage.isPageDisplayed()){
@@ -30,25 +34,34 @@ public class Onbording {
         }
 
         AgreementPage agreementPage = new AgreementPage();
-        if(agreementPage.isPageDisplayed()){
+        agreementPage
+                .checkInitElements()
+                .tapAcceptButton();
+        /*if(agreementPage.isPageDisplayed()){
             agreementPage
                     .checkInitElements()
                     .tapAcceptButton();
-        }
+        }*/
 
         AgreementKasperskyPage agreementKasperskyPage = new AgreementKasperskyPage();
-        if(agreementKasperskyPage.isPageDisplayed()){
+        agreementKasperskyPage
+                .checkInitElements()
+                .clickAcceptButton();
+        /*if(agreementKasperskyPage.isPageDisplayed()){
             agreementKasperskyPage
                     .checkInitElements()
                     .clickAcceptButton();
-        }
+        }*/
 
         TutorialPage tutorialPage = new TutorialPage();
-        if(tutorialPage.isPageDisplayed()){
+        tutorialPage
+                .checkInitElements()
+                .tapButtonClose();
+        /*if(tutorialPage.isPageDisplayed()){
             tutorialPage
                     .checkInitElements()
                     .tapButtonClose();
-        }
+        }*/
 
         MainPage mainPage = new MainPage();
         mainPage.isPageDisplayed();
