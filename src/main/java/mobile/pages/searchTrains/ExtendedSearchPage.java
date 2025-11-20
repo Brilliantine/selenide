@@ -156,10 +156,13 @@ public class ExtendedSearchPage extends BasePage {
     //Метод для обхода кнопки поиска поезда и безопасного клика по нужному элементу
     public void isElementSafeToClick(SelenideAppiumElement element){
         if(!element.is(visible)){
-            element.scrollTo();
+            element
+                    .scrollTo()
+                    .click();
         }
-        element.shouldBe(visible);
-        shortScroll();
-        element.click();
+        else if (element.is(visible)){
+            shortScroll();
+            element.click();
+        }
     }
 }

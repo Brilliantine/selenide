@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.pages.main.MainPage;
 import mobile.utils.AppConfig;
-import mobile.utils.Initializer;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
@@ -40,24 +39,21 @@ public class SearchStationPage extends BasePage {
 
     //Данный метод при тесте занимает около 1 минуты
     @Step("Нажать на станцию: {value}")
-    public MainPage castomClickOnStation(String value){
+    public MainPage clickOnStationMainPage(String value){
         By station = By.xpath("//android.widget.TextView[@resource-id='" +
                 AppConfig.getInstance().getPathToElement() +
                 ":id/tvTitle' and @text='" + value + "']");
         waitAndClick(station);
         return new MainPage();
     }
-    //Метод не стабильный. Писал только в рамках изучения куда сливается время при клике на станцию
-    public MainPage castomFastClickOnStation(String value){
-        try {
-            Thread.sleep(2000);
-            Initializer.getDriver()
-                    .findElement(By.xpath("//*[@text='" + value + "']"))
-                    .click();
-        }catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }
-        return new MainPage();
+
+    @Step("Нажать на станцию: {value}")
+    public ExtendedSearchPage clickOnStationExtendedSearchPage(String value){
+        By station = By.xpath("//android.widget.TextView[@resource-id='" +
+                AppConfig.getInstance().getPathToElement() +
+                ":id/tvTitle' and @text='" + value + "']");
+        waitAndClick(station);
+        return new ExtendedSearchPage();
     }
 
     //Вывод времени добавлял для отладки. При тесте данный метод занимает 2-3 минуты

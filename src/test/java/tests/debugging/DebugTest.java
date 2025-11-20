@@ -3,6 +3,9 @@ package tests.debugging;
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.pages.main.MainPage;
+import mobile.pages.parts.Progressbar;
+import mobile.pages.schedule.SchedulePage;
+import mobile.pages.searchTrains.ExtendedSearchPage;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
@@ -16,11 +19,30 @@ public class DebugTest extends BaseTest {
         mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
-                .selectTicketsOnly()
                 .selectConnection()
                 .selectCarrier("ДОСС")
                 .selectTrainBrand("Сапсан");
-                //.selectService("Вагон для перевозки автомобиля");
+        /*mainPage
+                .clickButtonExtendedSearch()
+                .checkInitElements()
+                .searchStationFrom()
+                .setStation("МОС")
+                .clickOnStationExtendedSearchPage("МОСКВА")
+                .searchStationWhere()
+                .setStation("САНКТ")
+                .clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
+                .clickFromDate()
+                .checkInitElements()
+                .selectDateFromToday(3)
+                .clickContinue();
+        new ExtendedSearchPage()
+                .selectTicketsOnly()
+                .selectCarrier("ДОСС")
+                .selectTrainBrand("Сапсан")
+                .clickButtonSearchTrains();
+        Progressbar.waitLoading();
+        new SchedulePage()
+                .checkInitElements();*/
         //LoginHelper.authorization();
         /*mainPage
                 .searchStationFromPage()

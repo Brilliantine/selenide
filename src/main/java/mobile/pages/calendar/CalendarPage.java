@@ -51,15 +51,13 @@ public class CalendarPage {
 
         System.out.println(date.format(formatter));
 
-        if(dateElement.is(visible)){
-            dateElement.click();
+        if(!dateElement.is(visible)){
+            dateElement.scrollTo();
         }
-        else {
-            dateElement
-                    .scrollTo()
-                    .shouldBe(visible, Duration.ofSeconds(5))
-                    .click();
-        }
+        dateElement
+                .shouldBe(visible)
+                .click();
+
     }
 
     //Поиск даты в одну сторону
@@ -89,8 +87,7 @@ public class CalendarPage {
 
 
     @Step("Нажать на кнопку ПРОДОЛЖИТЬ")
-    public SchedulePage clickContinue(){
+    public void clickContinue(){
         buttonNext.click();
-        return new SchedulePage();
     }
 }
