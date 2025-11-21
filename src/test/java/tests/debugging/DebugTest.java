@@ -16,13 +16,13 @@ public class DebugTest extends BaseTest {
         Onbording.completeOnboarding();
         MainPage mainPage = new MainPage();
         mainPage.isPageDisplayed();
-        mainPage
+        /*mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
                 .selectConnection()
                 .selectCarrier("ДОСС")
-                .selectTrainBrand("Сапсан");
-        /*mainPage
+                .selectTrainBrand("Фирменный");*/
+        mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
                 .searchStationFrom()
@@ -42,7 +42,7 @@ public class DebugTest extends BaseTest {
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
         new SchedulePage()
-                .checkInitElements();*/
+                .checkInitElements();
         //LoginHelper.authorization();
         /*mainPage
                 .searchStationFromPage()

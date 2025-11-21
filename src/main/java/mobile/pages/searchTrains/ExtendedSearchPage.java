@@ -157,12 +157,10 @@ public class ExtendedSearchPage extends BasePage {
     public void isElementSafeToClick(SelenideAppiumElement element){
         if(!element.is(visible)){
             element
-                    .scrollTo()
-                    .click();
+                    .scrollTo();
         }
-        else if (element.is(visible)){
-            shortScroll();
-            element.click();
-        }
+        element.shouldBe(visible);
+        shortScroll();
+        element.click();
     }
 }

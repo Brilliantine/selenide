@@ -39,7 +39,7 @@ public class BasePage {
                 "width",screenWidth*8/10,
                 "height",screenHeight/2,
                 "direction", "down",
-                "percent", 0.3
+                "percent", 0.2
         );
         Initializer.getDriver().executeScript("mobile: scrollGesture", params);
     }
