@@ -45,11 +45,8 @@ public class CalendarPage {
     //Клик по дате
     public void clickDate(LocalDate date){
         //$(AppiumBy.xpath("//android.view.View[contains(@content-desc, '" +date.format(formatter)+"')]");
-
         String formatedDate = getFormattedDate(date);
         SelenideAppiumElement dateElement = $(AppiumBy.accessibilityId(formatedDate));
-
-        System.out.println(date.format(formatter));
 
         if(!dateElement.is(visible)){
             dateElement.scrollTo();
@@ -63,13 +60,10 @@ public class CalendarPage {
     //Поиск даты в одну сторону
     public void clickOneDate(LocalDate date){
 
-        if (!swapElement.is(visible)){
-            System.out.println("иконки свайпа нет на экране");
-            clickDate(date);
-        }else {
+        if (swapElement.is(visible)){
             oneWayPicker.click();
-            clickDate(date);
         }
+        clickDate(date);
 
     }
 

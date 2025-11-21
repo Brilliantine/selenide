@@ -25,17 +25,18 @@ public class DebugTest extends BaseTest {
         mainPage
                 .clickButtonExtendedSearch()
                 .checkInitElements()
+                .clickFromDate()
+                .checkInitElements()
+                .selectDateFromToday(3)
+                .clickContinue();
+        ExtendedSearchPage extendedSearchPage = new ExtendedSearchPage();
+        extendedSearchPage
                 .searchStationFrom()
                 .setStation("МОС")
                 .clickOnStationExtendedSearchPage("МОСКВА")
                 .searchStationWhere()
                 .setStation("САНКТ")
                 .clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
-                .clickFromDate()
-                .checkInitElements()
-                .selectDateFromToday(3)
-                .clickContinue();
-        new ExtendedSearchPage()
                 .selectTicketsOnly()
                 .selectCarrier("ДОСС")
                 .selectTrainBrand("Сапсан")
