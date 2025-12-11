@@ -10,6 +10,7 @@ import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -58,15 +59,20 @@ public class SchedulePage extends BasePage {
 
     @Step("Выбрать бренд поезда: '{brand}'")
     public SchedulePage selectTrainBrand(String brand){
+        SelenideAppiumElement xpath =
         $(AppiumBy.xpath(
                 "//android.widget.CheckBox[@resource-id=\"" +
                         AppConfig.getInstance().getPathToElement() +
                         ":id/filterCheckBox\" and @text=\"" +
                         brand +
                         "\"]"
-        ))
+        ));
+
+        xpath
                 .shouldBe(visible)
                 .click();
+
+        xpath.shouldHave(attribute("checked", "true"));
      return this;
     }
 
