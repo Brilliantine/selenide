@@ -14,6 +14,7 @@ public class DebugTest extends BaseTest {
     @Test
     public void debug(){
         Onbording.completeOnboarding();
+        LoginHelper.authorization();
         MainPage mainPage = new MainPage();
         mainPage.isPageDisplayed();
         /*mainPage

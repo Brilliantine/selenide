@@ -4,6 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import mobile.pages.base.BasePage;
 import mobile.pages.parts.Progressbar;
 import mobile.utils.AppConfig;
 
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 @Slf4j
-public class SchedulePage {
+public class SchedulePage extends BasePage {
 
     //Всплывающее окно со списком ДП
     private final SelenideAppiumElement
@@ -44,14 +45,29 @@ public class SchedulePage {
     @Step("Закрыть всплывающее окно со списком ДП")
     public SchedulePage closeCardList(){
 
-        if(progressCardListTitle.is(visible, Duration.ofSeconds(3))){
+        if(progressCardListTitle.is(visible)){
             btnDisagreeEcard.shouldBe(visible).click();
         }
         else {
             log.info("Всплывающее окно со списком ДП не появилось");
+            System.out.println("Всплывающее окно со списком ДП не появилось");
         }
-        Progressbar.waitLoading();
+        //Progressbar.waitLoading();
         return this;
+    }
+
+    @Step("Выбрать бренд поезда: '{brand}'")
+    public SchedulePage selectTrainBrand(String brand){
+        $(AppiumBy.xpath(
+                "//android.widget.CheckBox[@resource-id=\"" +
+                        AppConfig.getInstance().getPathToElement() +
+                        ":id/filterCheckBox\" and @text=\"" +
+                        brand +
+                        "\"]"
+        ))
+                .shouldBe(visible)
+                .click();
+     return this;
     }
 
 }
