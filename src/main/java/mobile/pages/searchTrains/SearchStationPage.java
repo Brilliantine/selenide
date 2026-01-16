@@ -11,9 +11,11 @@ import org.openqa.selenium.By;
 import java.time.Duration;
 import java.util.Date;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
+import static com.codeborne.selenide.appium.SelenideAppium.$$;
 
 public class SearchStationPage extends BasePage {
 
@@ -53,6 +55,16 @@ public class SearchStationPage extends BasePage {
                 AppConfig.getInstance().getPathToElement() +
                 ":id/tvTitle' and @text='" + value + "']");
         waitAndClick(station);
+        return new ExtendedSearchPage();
+    }
+
+    @Step("Нажимаем на первую станцию в списке")
+    public ExtendedSearchPage clickFirstStation(){
+        SelenideAppiumElement station =
+                $$(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tvTitle"))
+                        .shouldHave(sizeGreaterThan(0))
+                        .first();
+        station.tap();
         return new ExtendedSearchPage();
     }
 

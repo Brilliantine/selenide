@@ -14,7 +14,7 @@ public class DebugTest extends BaseTest {
     @Test
     public void debug(){
         Onbording.completeOnboarding();
-        LoginHelper.authorization();
+        //LoginHelper.authorization();
         MainPage mainPage = new MainPage();
         mainPage.isPageDisplayed();
         /*mainPage
@@ -33,14 +33,15 @@ public class DebugTest extends BaseTest {
         ExtendedSearchPage extendedSearchPage = new ExtendedSearchPage();
         extendedSearchPage
                 .searchStationFrom()
-                .setStation("МОС")
-                .clickOnStationExtendedSearchPage("МОСКВА")
+                .setStation("МОСКВА")
+                .clickFirstStation()
+                //.clickOnStationExtendedSearchPage("МОСКВА")
                 .searchStationWhere()
                 .setStation("САНКТ")
                 .clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
-                .selectTicketsOnly()
-                .selectCarrier("ДОСС")
-                .selectTrainBrand("Сапсан")
+                //.selectTicketsOnly()
+                //.selectCarrier("ДОСС")
+                //.selectTrainBrand("Сапсан")
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
         new SchedulePage()
