@@ -13,7 +13,7 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 
 public class ExtendedSearchPage extends BasePage {
-    SelenideAppiumElement
+    private final SelenideAppiumElement
             toolbar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/toolbar")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад")),
             titlePage = $(byText("Расширенный поиск")),
