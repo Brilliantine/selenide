@@ -13,7 +13,6 @@ import java.util.Date;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.appium.SelenideAppium.$$;
@@ -40,11 +39,6 @@ public class SearchStationPage extends BasePage {
         inputSearch.clear();
         inputSearch.setValue(value);
         return this;
-    }
-
-    public ExtendedSearchPage clickStation(){
-        if(stationList.is(visible)); //Остановился на этом месте
-        return new ExtendedSearchPage();
     }
 
     //Данный метод при тесте занимает около 1 минуты
@@ -74,30 +68,5 @@ public class SearchStationPage extends BasePage {
                         .first();
         station.tap();
         return new ExtendedSearchPage();
-    }
-
-    //Вывод времени добавлял для отладки. При тесте данный метод занимает 2-3 минуты
-    @Step("Выбрать станцию")
-    public MainPage clickOnStation(String value){
-        long startTime = System.currentTimeMillis();
-
-        System.out.println("=== НАЧАЛО ПОИСКА СТАНЦИИ ===");
-        System.out.println("Время: " + new Date());
-
-        SelenideAppiumElement stationElement = $(byText(value));
-        System.out.println("Элемент создан: " + (System.currentTimeMillis() - startTime) + "ms");
-
-        boolean isVisible = stationElement.is(visible, Duration.ofSeconds(15));
-        System.out.println("Проверка видимости завершена: " + (System.currentTimeMillis() - startTime) + "ms");
-        System.out.println("Элемент видим: " + isVisible);
-
-        if(isVisible){
-            System.out.println("Станция найдена, начинаем клик: " + (System.currentTimeMillis() - startTime) + "ms");
-            stationElement.click();
-            System.out.println("Клик выполнен: " + (System.currentTimeMillis() - startTime) + "ms");
-        } else {
-            System.out.println("Станция не найдена: " + (System.currentTimeMillis() - startTime) + "ms");
-        }
-        return new MainPage();
     }
 }
