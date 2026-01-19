@@ -28,6 +28,17 @@ public class BasePage {
         waitForVisible(locator).click();
     }
 
+    //Клик без ожиданий. Метод писал для быстрого клика в RecyclerView. Метод нестабилен
+    protected void tapElement(By locator){
+        //Ожидание не стабильно
+        /*wait.until(d ->
+                !Initializer.getDriver()
+                        .findElements(locator)
+                        .isEmpty()
+        );*/
+        Initializer.getDriver().findElement(locator).click();
+    }
+
     // Простой скролл вниз
     public void shortScroll() {
         Dimension screenSize = Initializer.getDriver().manage().window().getSize();

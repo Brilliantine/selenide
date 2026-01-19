@@ -13,6 +13,7 @@ import java.util.Date;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.appium.SelenideAppium.$$;
@@ -22,7 +23,9 @@ public class SearchStationPage extends BasePage {
     private final SelenideAppiumElement
             inputSearch = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/search_src_text")),
             tabCitiesAndStation = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/first_type_view")),
-            tapRoutes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view"));
+            tapRoutes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view")),
+            //stationList = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/list_switcher")),;
+            stationList = $(AppiumBy.id("android:id/list"));
 
     @Step("Проверка начальных элементов страницы")
     public SearchStationPage checkInitElements(){
@@ -37,6 +40,11 @@ public class SearchStationPage extends BasePage {
         inputSearch.clear();
         inputSearch.setValue(value);
         return this;
+    }
+
+    public ExtendedSearchPage clickStation(){
+        if(stationList.is(visible)); //Остановился на этом месте
+        return new ExtendedSearchPage();
     }
 
     //Данный метод при тесте занимает около 1 минуты

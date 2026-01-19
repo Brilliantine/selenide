@@ -34,8 +34,8 @@ public class DebugTest extends BaseTest {
         extendedSearchPage
                 .searchStationFrom()
                 .setStation("МОСКВА")
-                .clickFirstStation()
-                //.clickOnStationExtendedSearchPage("МОСКВА")
+                //.clickFirstStation()
+                .clickOnStationExtendedSearchPage("МОСКВА")
                 .searchStationWhere()
                 .setStation("САНКТ")
                 .clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
