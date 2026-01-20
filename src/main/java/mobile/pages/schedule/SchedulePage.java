@@ -75,8 +75,16 @@ public class SchedulePage extends BasePage {
     }
 
     @Step("Проверить что выбранный бренд поезда успешно выбран")
-    public SchedulePage checkSelectedBrandTrain(SelenideAppiumElement element){
-        element.shouldHave(attribute("checked", "true"));
+    public SchedulePage checkSelectedBrandTrain(String brand){
+        SelenideAppiumElement xpath =
+                $(AppiumBy.xpath(
+                        "//android.widget.CheckBox[@resource-id=\"" +
+                                AppConfig.getInstance().getPathToElement() +
+                                ":id/filterCheckBox\" and @text=\"" +
+                                brand +
+                                "\"]"
+                ));
+        xpath.shouldHave(attribute("checked", "true"));
         return this;
     }
 
