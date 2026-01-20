@@ -71,9 +71,13 @@ public class SchedulePage extends BasePage {
         xpath
                 .shouldBe(visible)
                 .click();
-
-        xpath.shouldHave(attribute("checked", "true"));
      return this;
+    }
+
+    @Step("Проверить что выбранный бренд поезда успешно выбран")
+    public SchedulePage checkSelectedBrandTrain(SelenideAppiumElement element){
+        element.shouldHave(attribute("checked", "true"));
+        return this;
     }
 
 }
