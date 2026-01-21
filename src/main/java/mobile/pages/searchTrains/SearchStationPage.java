@@ -21,7 +21,8 @@ public class SearchStationPage extends BasePage {
             tabCitiesAndStation = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/first_type_view")),
             tapRoutes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view")),
             //stationList = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/list_switcher")),;
-            stationList = $(AppiumBy.id("android:id/list"));
+            stationList = $(AppiumBy.id("android:id/list")),
+            progressBar = $(AppiumBy.className("android.widget.ProgressBar"));
 
     @Step("Проверка начальных элементов страницы")
     public SearchStationPage checkInitElements(){
@@ -43,7 +44,7 @@ public class SearchStationPage extends BasePage {
     }
 
     //Метод быстрый, НО требует подгонки по координатам
-    // Быстрее способа кликнуть в RecyclerView к сожалению не нашел
+    // Способ не очень стабильный, но лучшего клика в RecyclerView к сожалению пока не придумал
     @Step("Нажать на первую станцию в списке")
     public void tapOnStation(double width, double height, String station){
         sleep(3000);

@@ -5,10 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import mobile.pages.base.BasePage;
-import mobile.pages.parts.Progressbar;
 import mobile.utils.AppConfig;
-
-import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -86,6 +83,19 @@ public class SchedulePage extends BasePage {
                 ));
         xpath.shouldHave(attribute("checked", "true"));
         return this;
+    }
+
+    @Step("Выбрать поезд № '{numberTrain}'")
+    public void selectTrain(String numberTrain){
+        //$(AppiumBy.xpath(
+        //        //            "//android.view.ViewGroup[contains(@content-desc, '" + numberTrain + "')]"
+        //        //        ))
+        $(AppiumBy.xpath(
+                    "//android.view.ViewGroup[contains(@content-desc, '" + numberTrain + "')]"
+                ))
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
     }
 
 }

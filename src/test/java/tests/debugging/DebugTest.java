@@ -47,7 +47,8 @@ public class DebugTest extends BaseTest {
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
         new SchedulePage()
-                .checkInitElements();
+                .checkInitElements()
+                .selectTrain("016А");
         //LoginHelper.authorization();
         /*mainPage
                 .searchStationFromPage()
