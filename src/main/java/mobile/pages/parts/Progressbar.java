@@ -8,6 +8,7 @@ import mobile.utils.AppConfig;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class Progressbar {
@@ -17,8 +18,12 @@ public class Progressbar {
     @Step("Ожидание появления и исчезновения загрузки")
     public static void waitLoading() {
         if ($(AppiumBy.xpath("//android.widget.ProgressBar"))
-                .is(Condition.visible, Duration.ofSeconds(15))) {
+                .is(visible, Duration.ofSeconds(15))) {
             progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(15));
         }
+    }
+
+    public static boolean isLoadingDisplayed(){
+        return progressBar.is(visible);
     }
 }
