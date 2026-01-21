@@ -1,6 +1,5 @@
 package tests.debugging;
 
-import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
@@ -34,13 +33,17 @@ public class DebugTest extends BaseTest {
         extendedSearchPage
                 .searchStationFrom()
                 .setStation("МОСКВА")
-                .clickOnStationExtendedSearchPage("МОСКВА")
+                .tapOnStation(0.5,0.25,"МОСКВА");
+                //.clickOnStationExtendedSearchPage("МОСКВА")
+        new ExtendedSearchPage()
                 .searchStationWhere()
                 .setStation("САНКТ")
-                .clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
+                .tapOnStation(0.5,0.25,"САНКТ-ПЕТЕРБУРГ");
+                //.clickOnStationExtendedSearchPage("САНКТ-ПЕТЕРБУРГ")
                 //.selectTicketsOnly()
                 //.selectCarrier("ДОСС")
                 //.selectTrainBrand("Сапсан")
+        new ExtendedSearchPage()
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
         new SchedulePage()

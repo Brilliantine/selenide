@@ -8,12 +8,9 @@ import mobile.pages.main.MainPage;
 import mobile.utils.AppConfig;
 import org.openqa.selenium.By;
 
-import java.time.Duration;
-import java.util.Date;
-
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.appium.AppiumSelectors.byText;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static com.codeborne.selenide.appium.SelenideAppium.$$;
 
@@ -41,6 +38,40 @@ public class SearchStationPage extends BasePage {
         return this;
     }
 
+    public boolean isPageDisplayed(){
+        return tabCitiesAndStation.is(visible);
+    }
+
+    //Метод быстрый, НО требует подгонки по координатам
+    // Быстрее способа кликнуть в RecyclerView к сожалению не нашел
+    @Step("Нажать на первую станцию в списке")
+    public void tapOnStation(double width, double height, String station){
+        sleep(3000);
+        tapByCoordinates(width,height);
+
+        if(isPageDisplayed()){
+            clickOnStation(station);
+        }
+    }
+
+    @Step("Нажать на станцию: {value}")
+    public void clickOnStation (String value){
+        By station = By.xpath("//android.widget.TextView[@resource-id='" +
+                AppConfig.getInstance().getPathToElement() +
+                ":id/tvTitle' and @text='" + value + "']");
+        waitAndClick(station);
+    }
+
+    @Step("Нажимаем на первую станцию в списке")
+    public void clickFirstStation(){
+        SelenideAppiumElement station =
+                $$(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tvTitle"))
+                        .shouldHave(sizeGreaterThan(0))
+                        .first();
+        station.tap();
+    }
+
+    //Методы clickOnStationMainPage и clickOnStationExtendedSearchPage долгие и уже не актуальны
     //Данный метод при тесте занимает около 1 минуты
     @Step("Нажать на станцию: {value}")
     public MainPage clickOnStationMainPage(String value){
@@ -57,16 +88,6 @@ public class SearchStationPage extends BasePage {
                 AppConfig.getInstance().getPathToElement() +
                 ":id/tvTitle' and @text='" + value + "']");
         waitAndClick(station);
-        return new ExtendedSearchPage();
-    }
-
-    @Step("Нажимаем на первую станцию в списке")
-    public ExtendedSearchPage clickFirstStation(){
-        SelenideAppiumElement station =
-                $$(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tvTitle"))
-                        .shouldHave(sizeGreaterThan(0))
-                        .first();
-        station.tap();
         return new ExtendedSearchPage();
     }
 }

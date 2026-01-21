@@ -7,10 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,15 +31,20 @@ public class BasePage {
         waitForVisible(locator).click();
     }
 
-    //Клик без ожиданий. Метод писал для быстрого клика в RecyclerView. Метод нестабилен
-    protected void tapElement(By locator){
-        //Ожидание не стабильно
-        /*wait.until(d ->
-                !Initializer.getDriver()
-                        .findElements(locator)
-                        .isEmpty()
-        );*/
-        Initializer.getDriver().findElement(locator).click();
+    //Клик по координатам
+    protected void tapByCoordinates(double width, double height){
+        Dimension sizeWindow = Initializer.getDriver().manage().window().getSize();
+        int widthWindow = (int)(sizeWindow.width * width);
+        int highWindow = (int)(sizeWindow.height * height);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tap = new Sequence(finger, 1);
+
+        tap.addAction(finger.createPointerMove(Duration.ofMillis(0),PointerInput.Origin.viewport(),widthWindow,highWindow));
+        tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        Initializer.getDriver().perform(Collections.singletonList(tap));
     }
 
     // Простой скролл вниз
