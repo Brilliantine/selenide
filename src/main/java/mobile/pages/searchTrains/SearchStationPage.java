@@ -46,7 +46,6 @@ public class SearchStationPage extends BasePage {
     }
 
     //Метод быстрый, НО требует подгонки по координатам
-    // Способ не очень стабильный, но лучшего клика в RecyclerView к сожалению пока не придумал
     @Step("Нажать на первую станцию в списке")
     public void tapOnStation(double width, double height, String station){
         if (progressBar.exists()){
