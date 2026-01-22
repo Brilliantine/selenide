@@ -8,6 +8,8 @@ import mobile.pages.main.MainPage;
 import mobile.utils.AppConfig;
 import org.openqa.selenium.By;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -47,9 +49,10 @@ public class SearchStationPage extends BasePage {
     // Способ не очень стабильный, но лучшего клика в RecyclerView к сожалению пока не придумал
     @Step("Нажать на первую станцию в списке")
     public void tapOnStation(double width, double height, String station){
-        sleep(3000);
+        if (progressBar.exists()){
+            progressBar.shouldNotBe(visible);
+        }
         tapByCoordinates(width,height);
-
         if(isPageDisplayed()){
             clickOnStation(station);
         }
