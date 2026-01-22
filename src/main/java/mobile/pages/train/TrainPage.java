@@ -2,6 +2,7 @@ package mobile.pages.train;
 
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
+import io.qameta.allure.Step;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -14,7 +15,8 @@ public class TrainPage {
             btnBasket = $(AppiumBy.accessibilityId("Корзина")),
             tvStation0 = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/tvStation0")),
             tvStation1 = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/tvStation1")),
-            btnFilterWagon = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").instance(3)"));
+            btnFilterWagon = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").instance(3)")),
+            scrollView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/date")); //фильтр вагонов
 
     public TrainPage checkInitElements(){
         toolbar.shouldBe(visible);
@@ -23,6 +25,14 @@ public class TrainPage {
         tvStation0.shouldBe(visible);
         tvStation1.shouldBe(visible);
         btnFilterWagon.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Нажать на кнопку фильтра вагонов")
+    public TrainPage clickButtonFilterWagon(){
+        btnBack
+                .shouldBe(visible)
+                .click();
         return this;
     }
 }
