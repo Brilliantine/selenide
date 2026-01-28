@@ -47,14 +47,11 @@ public class SearchStationPage extends BasePage {
 
     //Метод быстрый, НО требует подгонки по координатам
     @Step("Нажать на первую станцию в списке")
-    public void tapOnStation(double width, double height, String station){
+    public void tapOnStation(double width, double height){
         if (progressBar.exists()){
             progressBar.shouldNotBe(visible);
         }
         tapByCoordinates(width,height);
-        if(isPageDisplayed()){
-            clickOnStation(station);
-        }
     }
 
     @Step("Нажать на станцию: {value}")
