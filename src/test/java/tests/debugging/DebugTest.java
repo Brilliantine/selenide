@@ -6,6 +6,7 @@ import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
+import mobile.pages.train.TrainPage;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
@@ -42,6 +43,8 @@ public class DebugTest extends BaseTest {
         schedulePage
                 .checkInitElements()
                 .selectTrain("016А");
+        TrainPage trainPage = new TrainPage();
+
 
     }
 }

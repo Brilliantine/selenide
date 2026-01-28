@@ -15,7 +15,7 @@ public class TrainPage {
             btnBasket = $(AppiumBy.accessibilityId("Корзина")),
             tvStation0 = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/tvStation0")),
             tvStation1 = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/tvStation1")),
-            btnFilterWagon = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").instance(3)")),
+            btnFilterCarriage = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").instance(3)")),
             scrollView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/date")); //фильтр вагонов
 
     public TrainPage checkInitElements(){
@@ -24,13 +24,22 @@ public class TrainPage {
         btnBasket.shouldBe(visible);
         tvStation0.shouldBe(visible);
         tvStation1.shouldBe(visible);
-        btnFilterWagon.shouldBe(visible);
+        btnFilterCarriage.shouldBe(visible);
         return this;
     }
 
     @Step("Нажать на кнопку фильтра вагонов")
-    public TrainPage clickButtonFilterWagon(){
+    public TrainPage clickButtonFilterCarriage(){
         btnBack
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Нажать на вагон № {carriageNumber}")
+    public TrainPage selectCarriage(String carriageNumber){
+        $(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Вагон №0"+carriageNumber+"\")"))
+                .scrollTo()
                 .shouldBe(visible)
                 .click();
         return this;
