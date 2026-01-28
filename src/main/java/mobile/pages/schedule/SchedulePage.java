@@ -43,14 +43,13 @@ public class SchedulePage extends BasePage {
     @Step("Закрыть всплывающее окно со списком ДП")
     public SchedulePage closeCardList(){
 
-        if(progressCardListTitle.is(visible)){
+        if(progressCardListTitle.exists()){
             btnDisagreeEcard.shouldBe(visible).click();
         }
         else {
             log.info("Всплывающее окно со списком ДП не появилось");
             System.out.println("Всплывающее окно со списком ДП не появилось");
         }
-        //Progressbar.waitLoading();
         return this;
     }
 
