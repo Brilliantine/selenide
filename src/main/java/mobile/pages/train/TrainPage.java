@@ -38,7 +38,7 @@ public class TrainPage {
 
     @Step("Нажать на вагон № {carriageNumber}")
     public TrainPage selectCarriage(String carriageNumber){
-        $(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Вагон №0"+carriageNumber+"\")"))
+        $(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Вагон №"+carriageNumber+"\")"))
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
