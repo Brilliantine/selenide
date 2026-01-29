@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.enums.BranchesCommon;
 import mobile.enums.Contour;
+import mobile.pages.base.BasePage;
 import mobile.utils.AppConfig;
 
 import java.time.Duration;
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
-public class EnvironmentSelectionPage {
+public class EnvironmentSelectionPage extends BasePage {
     /*private final static SelenideAppiumElement title = $(AppiumBy.id("ru.rzd.pass.debug:id/title"));
     private final SelenideAppiumElement changeContour = $(AppiumBy.id("ru.rzd.pass.debug:id/apply_host"));
     private final SelenideAppiumElement buttonNext = $(AppiumBy.id("ru.rzd.pass.debug:id/continue_button"));*/
@@ -79,8 +80,9 @@ public class EnvironmentSelectionPage {
     @Step("Скролим и нажимаем кноопку ПОМЕНЯТЬ КОНТУР")
     public EnvironmentSelectionPage tapChangeContour(){
         changeContour
-                .scrollTo()
-                .click();
+                .scrollTo();
+        shortScroll();
+        changeContour.click();
         return this;
     }
     @Step("Нажимаем на кнопку ПРОДОЛЖИТЬ и переходим к пользовательскому соглашению")

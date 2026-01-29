@@ -3,12 +3,14 @@ package mobile.pages.train;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.base.BasePage;
+import mobile.pages.schemeCarriage.SchemeCarriage;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
-public class TrainPage {
+public class TrainPage extends BasePage {
     private final SelenideAppiumElement
             toolbar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/toolbar")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад")),
@@ -37,11 +39,11 @@ public class TrainPage {
     }
 
     @Step("Нажать на вагон № {carriageNumber}")
-    public TrainPage selectCarriage(String carriageNumber){
+    public SchemeCarriage selectCarriage(String carriageNumber){
         $(AppiumBy.androidUIAutomator("new UiSelector().textContains(\"Вагон №"+carriageNumber+"\")"))
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
-        return this;
+        return new SchemeCarriage();
     }
 }

@@ -36,7 +36,6 @@ public class SearchStationPage extends BasePage {
 
     @Step("Заполнить поле поиска: {value}")
     public SearchStationPage setStation(String value){
-        inputSearch.clear();
         inputSearch.setValue(value);
         return this;
     }
