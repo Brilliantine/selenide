@@ -2,6 +2,7 @@ package mobile.pages.schemeCarriage;
 
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
+import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.utils.AppConfig;
 
@@ -12,12 +13,20 @@ public class SchemeCarriage extends BasePage {
     private final SelenideAppiumElement
             toolbar = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/toolbar")),
             btnContinue = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/btnContinue")),
-            btnZoom = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/zoom_button"));
+            btnZoom = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/zoom_button")),
+            btnBack = $(AppiumBy.accessibilityId("Перейти назад"));
 
+    @Step("Проверка начальных элементов страницы 'Схема вагона'")
     public SchemeCarriage checkInitElements(){
-        toolbar.shouldBe(visible);
         btnContinue.shouldBe(visible);
         btnZoom.shouldBe(visible);
         return this;
+    }
+
+    @Step("Нажать на кнопку 'ПРОДОЛЖИТЬ'")
+    public void clickButtonContinue(){
+        btnContinue
+                .shouldBe(visible)
+                .click();
     }
 }
