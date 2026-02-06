@@ -29,11 +29,11 @@ public class DebugTest extends BaseTest {
         extendedSearchPage
                 .searchStationFrom()
                 .setStation("МОСКВА")
-                .tapOnStation(0.5,0.25);
+                .tapOnStation(0.5,0.21);
         new ExtendedSearchPage()
                 .searchStationWhere()
                 .setStation("САНКТ")
-                .tapOnStation(0.5,0.25);
+                .tapOnStation(0.5,0.21);
         new ExtendedSearchPage()
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
