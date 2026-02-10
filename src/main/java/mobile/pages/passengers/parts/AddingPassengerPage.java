@@ -3,13 +3,15 @@ package mobile.pages.passengers.parts;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.base.BasePage;
+import mobile.pages.documentsPassenger.DocumentPage;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
-public class AddingPassengerPage {
+public class AddingPassengerPage extends BasePage {
     private final SelenideAppiumElement
             //Общие элементы страницы
             titlePage = $(byText("Новый пассажир")),
@@ -33,7 +35,7 @@ public class AddingPassengerPage {
             listGender = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/gender")),
     //Документ
             documentView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/document_view")),
-            addNewDocument = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/empty")),
+            btnAddDocument = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/empty")),
     //Бонусные карты
             btnAddCard = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/addCardButton")),
     //Контактные данные
@@ -46,7 +48,7 @@ public class AddingPassengerPage {
             chbDependent = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbDependent")),
             chbInvalid = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbInvalid"));
 
-    @Step("Проверка начальных элементов страницы 'Новый пассажир'")
+    @Step("Проверка начальных элементов экрана 'Новый пассажир'")
     public AddingPassengerPage checkInitElements(){
         titlePage.shouldBe(visible);
         btnBack.shouldBe(visible);
@@ -111,6 +113,25 @@ public class AddingPassengerPage {
                 .click();
         listGender.shouldHave(text("Женский"));
         return this;
+    }
+
+    @Step("Заполнить дату рождения")
+    public AddingPassengerPage setBirthday(String birthday){
+        fieldDateBirthday
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        fieldDateBirthday.setValue(birthday);
+        return this;
+    }
+
+    @Step("Нажать на кнопку 'Добавить документ'")
+    public DocumentPage addDocument(){
+        btnAddDocument
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        return new DocumentPage();
     }
 
 }
