@@ -23,7 +23,7 @@ public class AddingPassengerPage extends BasePage {
     //ФИО
             patronymic = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymic_edit")),
             name = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/name_edit")),
-            surname = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/surname_edit")),
+            lastname = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/surname_edit")),
             patronymicEmptyCheck = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymicEmptyCheck")),
     //Аллерт который появляется при активации чек-бокса без отчества
             alertTitle = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/alertTitle")),
@@ -39,7 +39,7 @@ public class AddingPassengerPage extends BasePage {
     //Бонусные карты
             btnAddCard = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/addCardButton")),
     //Контактные данные
-            fieldMail = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/emailEditText")),
+            fieldEmail = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/emailEditText")),
             fieldPhone = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/phoneEditText")),
             noPhoneDisclamer = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/noPhoneDisclamer")),
     //Доп поля
@@ -57,6 +57,34 @@ public class AddingPassengerPage extends BasePage {
         return this;
     }
 
+    @Step("Заполнить поле Фамилия")
+    public AddingPassengerPage setLastname(String lastname){
+        this.lastname
+                .shouldBe(visible)
+                .click();
+        this.lastname.setValue(lastname);
+        this.lastname.click(); //клик для скрытия подсказкича
+        return this;
+    }
+    @Step("Заполнить поле Имя")
+    public AddingPassengerPage setFIO(String name){
+        this.name
+                .shouldBe(visible)
+                .click();
+        this.name.setValue(name);
+        this.name.click(); //клик для скрытия подсказкича
+        return this;
+    }
+    @Step("Заполнить поле Имя")
+    public AddingPassengerPage setPatronymic(String patronymic){
+        this.patronymic
+                .shouldBe(visible)
+                .click();
+        this.patronymic.setValue(patronymic);
+        this.patronymic.click(); //клик для скрытия подсказкича
+        return this;
+    }
+
     @Step("Заполнить данные из профиля")
     public AddingPassengerPage fillDataFromProfile(){
         btnFillFromProfile
@@ -67,7 +95,7 @@ public class AddingPassengerPage extends BasePage {
 
     @Step("Проверка полей ФИО после автозаполнения")
     public AddingPassengerPage checkingFullNameFields(){
-        surname
+        lastname
                 .shouldBe(visible)
                 .shouldNotHave(value(""));
         name
@@ -132,6 +160,26 @@ public class AddingPassengerPage extends BasePage {
                 .shouldBe(visible)
                 .click();
         return new DocumentPage();
+    }
+
+    @Step("Указать номер телефона")
+    public AddingPassengerPage setNumberPhone(String numberPhone){
+        fieldPhone
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        fieldPhone.setValue(numberPhone); //номер без 8 и +7
+        return this;
+    }
+
+    @Step("Указать почту")
+    public AddingPassengerPage setEmail(String email){
+        fieldEmail
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        fieldEmail.setValue(email);
+        return this;
     }
 
 }

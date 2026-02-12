@@ -46,7 +46,8 @@ public class DebugTest extends BaseTest {
         new TrainPage()
                 .checkInitElements()
                 .selectCarriage("02")
-                .checkInitElements();
+                .checkInitElements()
+                .clickButtonContinue();
 
 
 
