@@ -63,7 +63,7 @@ public class AddingPassengerPage extends BasePage {
                 .shouldBe(visible)
                 .click();
         this.lastname.setValue(lastname);
-        this.lastname.click(); //клик для скрытия подсказкича
+        //this.lastname.click(); //клик для скрытия подсказкича
         return this;
     }
     @Step("Заполнить поле Имя")
@@ -72,20 +72,20 @@ public class AddingPassengerPage extends BasePage {
                 .shouldBe(visible)
                 .click();
         this.name.setValue(name);
-        this.name.click(); //клик для скрытия подсказкича
+        //this.name.click(); //клик для скрытия подсказкича
         return this;
     }
-    @Step("Заполнить поле Имя")
+    @Step("Заполнить поле Отчество")
     public AddingPassengerPage setPatronymic(String patronymic){
         this.patronymic
                 .shouldBe(visible)
                 .click();
         this.patronymic.setValue(patronymic);
-        this.patronymic.click(); //клик для скрытия подсказкича
+        //this.patronymic.click(); //клик для скрытия подсказкича
         return this;
     }
 
-    @Step("Заполнить данные из профиля")
+    @Step("Заполнить данными из профиля")
     public AddingPassengerPage fillDataFromProfile(){
         btnFillFromProfile
                 .shouldBe(visible)
@@ -179,6 +179,12 @@ public class AddingPassengerPage extends BasePage {
                 .shouldBe(visible)
                 .click();
         fieldEmail.setValue(email);
+        return this;
+    }
+
+    @Step("Нажать на кнопку 'Сохранить'")
+    public AddingPassengerPage clickBtnSave(){
+        btnSave.click();
         return this;
     }
 
