@@ -117,30 +117,27 @@ public class AddingPassengerPage extends BasePage {
         return this;
     }
 
-    @Step("Выбрать мужской пол")
-    public AddingPassengerPage selectMenGender(){
+    @Step("Выбрать пол: {gender}")
+    public AddingPassengerPage selectGender(String gender){
         listGender
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
-        $(byText("Мужской"))
+        $(AppiumBy.xpath("//*[@text='" + gender + "']"))
                 .shouldBe(visible)
                 .click();
         listGender.shouldHave(text("Мужской"));
         return this;
     }
 
+    @Step("Выбрать мужской пол")
+    public AddingPassengerPage selectMenGender() {
+        return selectGender("Мужской");
+    }
+
     @Step("Выбрать женский пол")
-    public AddingPassengerPage selectFemaleGender(){
-        listGender
-                .scrollTo()
-                .shouldBe(visible)
-                .click();
-        $(byText("Женский"))
-                .shouldBe(visible)
-                .click();
-        listGender.shouldHave(text("Женский"));
-        return this;
+    public AddingPassengerPage selectFemaleGender() {
+        return selectGender("Женский");
     }
 
     @Step("Заполнить дату рождения")

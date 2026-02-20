@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ServerType {
     DEBUG("debug",Contour.MASTER, Branches.TEST_RELEASE),
-    ADAPTER("adapter",Contour.BRANCHES, Branches.ADAPTER),
+    //ADAPTER("adapter",Contour.BRANCHES, Branches.ADAPTER),
+    ADAPTER("adapter",Contour.MASTER, Branches.TEST_RELEASE),
     PROD("prod", null, null);
 
     private final String value;

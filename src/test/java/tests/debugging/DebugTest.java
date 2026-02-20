@@ -2,6 +2,7 @@ package tests.debugging;
 
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
+import mobile.pages.dataPassenger.DataPassenger;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
 import mobile.pages.schedule.SchedulePage;
@@ -42,12 +43,22 @@ public class DebugTest extends BaseTest {
         Progressbar.waitLoading();
         schedulePage
                 .checkInitElements()
-                .selectTrain("016А");
+                .selectTrain("057М");
         new TrainPage()
                 .checkInitElements()
                 .selectCarriage("02")
                 .checkInitElements()
                 .clickButtonContinue();
+        new DataPassenger()
+                .checkInitElements()
+                .clickButtonAddPassenger()
+                .checkInitElements()
+                .clickBtnAddNewPassenger()
+                .checkInitElements()
+                .fillDataFromProfile()
+                //.checkingFullNameFields()
+                .setBirthday("08071996")
+                .selectGender("Мужской");
 
 
 

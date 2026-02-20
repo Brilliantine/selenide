@@ -19,8 +19,8 @@ public class DataPassenger extends BasePage {
             tariffField = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/tariff_spinner")),
             btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder")),
             insurancePopup = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/parentPanel")),
-            btnInsuranceYes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/button1")),
-            btnInsuranceNo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/button2"));
+            btnInsuranceYes = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/button2")),
+            btnInsuranceNo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/button1"));
 
     @Step("Проверка начальных элементов экрана 'Данные пассажиров'")
     public DataPassenger checkInitElements(){
