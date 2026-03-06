@@ -1,10 +1,7 @@
 package mobile.utils;
 
-import com.codeborne.selenide.SelenideElement;
-import io.appium.java_client.AppiumBy;
-import mobile.enums.BranchesCommon;
+import mobile.enums.Branches;
 import mobile.enums.Contour;
-import org.openqa.selenium.By;
 import mobile.enums.ServerType;
 
 import java.io.IOException;
@@ -111,7 +108,7 @@ public class AppConfig {
     }
 
     //Получаем ветку
-    public BranchesCommon getAutoBranch() {
+    public Branches getAutoBranch() {
         return serverType.getAutoBranch();
     }
 }

@@ -32,7 +32,7 @@ public class PassengersPage extends BasePage {
     }
 
     @Step("Нажать на кнопку 'Добавить нового пассажира'")
-    public AddingPassengerPage addNewPassenger(){
+    public AddingPassengerPage clickBtnAddNewPassenger(){
         btnAddPassenger
                 .shouldBe(visible)
                 .click();

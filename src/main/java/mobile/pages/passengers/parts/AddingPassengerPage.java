@@ -3,13 +3,15 @@ package mobile.pages.passengers.parts;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.base.BasePage;
+import mobile.pages.documentsPassenger.DocumentPage;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.appium.AppiumSelectors.byText;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
-public class AddingPassengerPage {
+public class AddingPassengerPage extends BasePage {
     private final SelenideAppiumElement
             //Общие элементы страницы
             titlePage = $(byText("Новый пассажир")),
@@ -21,7 +23,7 @@ public class AddingPassengerPage {
     //ФИО
             patronymic = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymic_edit")),
             name = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/name_edit")),
-            surname = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/surname_edit")),
+            lastname = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/surname_edit")),
             patronymicEmptyCheck = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/patronymicEmptyCheck")),
     //Аллерт который появляется при активации чек-бокса без отчества
             alertTitle = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/alertTitle")),
@@ -33,11 +35,11 @@ public class AddingPassengerPage {
             listGender = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/gender")),
     //Документ
             documentView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/document_view")),
-            addNewDocument = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/empty")),
+            btnAddDocument = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/empty")),
     //Бонусные карты
             btnAddCard = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/addCardButton")),
     //Контактные данные
-            fieldMail = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/emailEditText")),
+            fieldEmail = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/emailEditText")),
             fieldPhone = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/phoneEditText")),
             noPhoneDisclamer = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/noPhoneDisclamer")),
     //Доп поля
@@ -46,7 +48,7 @@ public class AddingPassengerPage {
             chbDependent = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbDependent")),
             chbInvalid = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/chbInvalid"));
 
-    @Step("Проверка начальных элементов страницы 'Новый пассажир'")
+    @Step("Проверка начальных элементов экрана 'Новый пассажир'")
     public AddingPassengerPage checkInitElements(){
         titlePage.shouldBe(visible);
         btnBack.shouldBe(visible);
@@ -55,7 +57,35 @@ public class AddingPassengerPage {
         return this;
     }
 
-    @Step("Заполнить данные из профиля")
+    @Step("Заполнить поле Фамилия")
+    public AddingPassengerPage setLastname(String lastname){
+        this.lastname
+                .shouldBe(visible)
+                .click();
+        this.lastname.setValue(lastname);
+        //this.lastname.click(); //клик для скрытия подсказкича
+        return this;
+    }
+    @Step("Заполнить поле Имя")
+    public AddingPassengerPage setFIO(String name){
+        this.name
+                .shouldBe(visible)
+                .click();
+        this.name.setValue(name);
+        //this.name.click(); //клик для скрытия подсказкича
+        return this;
+    }
+    @Step("Заполнить поле Отчество")
+    public AddingPassengerPage setPatronymic(String patronymic){
+        this.patronymic
+                .shouldBe(visible)
+                .click();
+        this.patronymic.setValue(patronymic);
+        //this.patronymic.click(); //клик для скрытия подсказкича
+        return this;
+    }
+
+    @Step("Заполнить данными из профиля")
     public AddingPassengerPage fillDataFromProfile(){
         btnFillFromProfile
                 .shouldBe(visible)
@@ -65,7 +95,7 @@ public class AddingPassengerPage {
 
     @Step("Проверка полей ФИО после автозаполнения")
     public AddingPassengerPage checkingFullNameFields(){
-        surname
+        lastname
                 .shouldBe(visible)
                 .shouldNotHave(value(""));
         name
@@ -87,29 +117,71 @@ public class AddingPassengerPage {
         return this;
     }
 
-    @Step("Выбрать мужской пол")
-    public AddingPassengerPage selectMenGender(){
+    @Step("Выбрать пол: {gender}")
+    public AddingPassengerPage selectGender(String gender){
         listGender
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
-        $(byText("Мужской"))
+        $(AppiumBy.xpath("//*[@text='" + gender + "']"))
                 .shouldBe(visible)
                 .click();
         listGender.shouldHave(text("Мужской"));
         return this;
     }
 
+    @Step("Выбрать мужской пол")
+    public AddingPassengerPage selectMenGender() {
+        return selectGender("Мужской");
+    }
+
     @Step("Выбрать женский пол")
-    public AddingPassengerPage selectFemaleGender(){
-        listGender
+    public AddingPassengerPage selectFemaleGender() {
+        return selectGender("Женский");
+    }
+
+    @Step("Заполнить дату рождения")
+    public AddingPassengerPage setBirthday(String birthday){
+        fieldDateBirthday
                 .scrollTo()
                 .shouldBe(visible)
                 .click();
-        $(byText("Женский"))
+        fieldDateBirthday.setValue(birthday);
+        return this;
+    }
+
+    @Step("Нажать на кнопку 'Добавить документ'")
+    public DocumentPage addDocument(){
+        btnAddDocument
+                .scrollTo()
                 .shouldBe(visible)
                 .click();
-        listGender.shouldHave(text("Женский"));
+        return new DocumentPage();
+    }
+
+    @Step("Указать номер телефона")
+    public AddingPassengerPage setNumberPhone(String numberPhone){
+        fieldPhone
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        fieldPhone.setValue(numberPhone); //номер без 8 и +7
+        return this;
+    }
+
+    @Step("Указать почту")
+    public AddingPassengerPage setEmail(String email){
+        fieldEmail
+                .scrollTo()
+                .shouldBe(visible)
+                .click();
+        fieldEmail.setValue(email);
+        return this;
+    }
+
+    @Step("Нажать на кнопку 'Сохранить'")
+    public AddingPassengerPage clickBtnSave(){
+        btnSave.click();
         return this;
     }
 

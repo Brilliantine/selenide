@@ -1,7 +1,7 @@
 package tests.login;
 
 import mobile.dto.AddUserData;
-import mobile.enums.BranchesCommon;
+import mobile.enums.Branches;
 import mobile.enums.Contour;
 import mobile.enums.Language;
 import mobile.pages.onbording.LanguageSelectionPage;
@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
                 .tapButtonNext()
                 .checkInitElements()
                 .selectEnvironment(Contour.COMMON)
-                .selectBranch(BranchesCommon.TEST)
+                .selectBranch(Branches.TEST_COMMON)
                 .tapChangeContour()
                 .tapButtonNext()
                 .checkInitElements()

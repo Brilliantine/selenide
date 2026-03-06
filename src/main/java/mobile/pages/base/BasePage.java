@@ -2,6 +2,7 @@ package mobile.pages.base;
 
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 import mobile.utils.Initializer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class BasePage {
@@ -45,6 +47,15 @@ public class BasePage {
         tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         Initializer.getDriver().perform(Collections.singletonList(tap));
+    }
+
+    //Закрытие клавиатуры
+    protected void hideKeyboard(){
+        //((AndroidDriver)Initializer.getDriver()).hideKeyboard();
+        if (Initializer.getDriver() instanceof AndroidDriver androidDriver) {
+            androidDriver.hideKeyboard();
+            sleep(300);
+        }
     }
 
     // Простой скролл вниз

@@ -3,7 +3,7 @@ package mobile.pages.onbording;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
-import mobile.enums.BranchesCommon;
+import mobile.enums.Branches;
 import mobile.enums.Contour;
 import mobile.pages.base.BasePage;
 import mobile.utils.AppConfig;
@@ -41,7 +41,7 @@ public class EnvironmentSelectionPage extends BasePage {
     }
 
     @Step("Выбор ветки")
-    public EnvironmentSelectionPage selectBranch(BranchesCommon branch){
+    public EnvironmentSelectionPage selectBranch(Branches branch){
         $(AppiumBy.xpath("//android.widget.RadioButton[@text='"+ branch.getBranch() +"']"))
                 .scrollTo()
                 .shouldBe(visible)
@@ -64,7 +64,7 @@ public class EnvironmentSelectionPage extends BasePage {
 
         //Автоматически получаем контур и ветку для текущей сборки
         Contour autoContour = config.getAutoContour();
-        BranchesCommon autoBranch = config.getAutoBranch();
+        Branches autoBranch = config.getAutoBranch();
 
         if(autoContour != null){
             selectEnvironment(autoContour);
@@ -81,7 +81,7 @@ public class EnvironmentSelectionPage extends BasePage {
     public EnvironmentSelectionPage tapChangeContour(){
         changeContour
                 .scrollTo();
-        shortScroll();
+        //shortScroll();
         changeContour.click();
         return this;
     }
