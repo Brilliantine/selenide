@@ -16,7 +16,7 @@ public class SchemeCarriage extends BasePage {
             btnZoom = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/zoom_button")),
             btnBack = $(AppiumBy.accessibilityId("Перейти назад"));
 
-    @Step("Проверка начальных элементов страницы 'Схема вагона'")
+    @Step("Проверка начальных элементов экрана 'Схема вагона'")
     public SchemeCarriage checkInitElements(){
         btnContinue.shouldBe(visible);
         btnZoom.shouldBe(visible);

@@ -16,7 +16,7 @@ public class DataPassenger extends BasePage {
             direction = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/direction")),
             btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/fab"));
 
-    @Step("Проверка начальных элементов страницы 'Данные пассажиры'")
+    @Step("Проверка начальных элементов экрана 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
         trainInfo.shouldBe(visible);
         direction.shouldBe(visible);

@@ -38,7 +38,7 @@ public class ExtendedSearchPage extends BasePage {
             btnSaveFilter = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/save_filter_button")),
             btnListFilters = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/list_filters_button"));
 
-    @Step("Проверка начальных элементов страницы расширенного поиска")
+    @Step("Проверка начальных элементов экрана расширенного поиска")
     public ExtendedSearchPage checkInitElements(){
         titlePage.shouldBe(visible);
         fieldFrom.shouldBe(visible);

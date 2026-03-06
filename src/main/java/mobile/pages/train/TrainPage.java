@@ -20,7 +20,7 @@ public class TrainPage extends BasePage {
             btnFilterCarriage = $(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageView\").instance(3)")),
             scrollView = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/date")); //фильтр вагонов
 
-    @Step("Проверка начальных элементов страницы 'Поезд'")
+    @Step("Проверка начальных элементов экрана 'Поезд'")
     public TrainPage checkInitElements(){
         toolbar.shouldBe(visible);
         btnBack.shouldBe(visible);
