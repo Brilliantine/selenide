@@ -3,6 +3,8 @@ package mobile.pages.base;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import mobile.utils.Initializer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -72,6 +74,14 @@ public class BasePage {
                 "percent", 0.2
         );
         Initializer.getDriver().executeScript("mobile: scrollGesture", params);
+    }
+    //Нажатие системной кнопки Назад
+    public void pressBack(){
+        if(Initializer.getDriver() instanceof AndroidDriver androidDriver){
+            androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
+        }else {
+            throw new UnsupportedOperationException("pressBack() поддерживается только на Android");
+        }
     }
     //Скролл нужно дорабатывать
     protected void scrollToElement(String xpath){
