@@ -14,11 +14,12 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class PassengersPage extends BasePage {
     private final SelenideAppiumElement
             titlePage = $(byText("Пассажиры")),
-            btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/add_passenger_button")),
+            btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/fab")),
             recentPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/first_type_view")),
             allPicker = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/second_type_view")),
             btnSearch = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/action_search")),
-            btnBack = $(AppiumBy.accessibilityId("Перейти назад"));
+            btnBack = $(AppiumBy.accessibilityId("Перейти назад")),
+            btnTransferDataPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/data_transfer"));
 
     @Step("Проверка начальных элементов страницы Пассажиры")
     public PassengersPage checkInitElements(){
