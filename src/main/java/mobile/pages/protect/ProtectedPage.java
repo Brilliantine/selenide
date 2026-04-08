@@ -54,6 +54,6 @@ public class ProtectedPage {
     }
 
     public boolean isPageDisplayed(){
-        return title.is(visible, Duration.ofSeconds(5));
+        return checkboxUsePinCode.is(visible, Duration.ofSeconds(5));
     }
 }

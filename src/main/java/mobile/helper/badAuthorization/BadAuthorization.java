@@ -3,6 +3,8 @@ package mobile.helper.badAuthorization;
 import mobile.helper.LoginHelper;
 import mobile.pages.base.BasePage;
 
+import static com.codeborne.selenide.Selenide.sleep;
+
 //Класс нужен для обхода бага с подвисанием экрана авторизации
 public class BadAuthorization extends BasePage {
 
@@ -10,10 +12,8 @@ public class BadAuthorization extends BasePage {
         try {
             LoginHelper.authorization();
         }catch (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("authorization() упал по таймауту");
             pressBack();
-
+            System.out.println("Прожали кнопку Назад");
         }
     }
 }

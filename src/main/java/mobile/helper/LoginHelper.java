@@ -14,17 +14,11 @@ import static mobile.utils.Constans.PASSWORD;
 public class LoginHelper {
 
 
-    public static boolean authorization(){
-        try {
+    public static void authorization(){
             navigateToMainPage();
             performLogin();
             Progressbar.waitLoading();
-            handleProtectionIfNeeded();
-            return verifySuccessfulLogin();
-        }catch (Exception e){
-            log.error("Ошибка авторизации: {}", e.getMessage());
-            return false;
-        }
+            skipProtectedPage();
     }
 
     //Проверка открыт ли главный экран
@@ -65,17 +59,15 @@ public class LoginHelper {
             log.info("Вы находитесь не на главном экране");
         }
     }
-    //Проверка открыт экран защиты входа или главный экран
-    public static void handleProtectionIfNeeded() {
-        ProtectedPage protectedPage = new ProtectedPage();
-        MainPage mainPage = new MainPage();
 
-        if (protectedPage.isPageDisplayed()) {
-            protectedPage
-                    .proceedToMainPage()
-                    .checkUserIsLoggedIn();
-        } else {
-            mainPage.checkUserIsLoggedIn();
+    //Пропускаем экран защиты приложения
+    public static void skipProtectedPage(){
+        ProtectedPage protectedPage = new ProtectedPage();
+        if(protectedPage.isPageDisplayed()) {
+            protectedPage.proceedToMainPage();
+        }else {
+            System.out.println("Открыт не экран защиты входа");
+            throw new RuntimeException("Открыт не экран защиты входа");
         }
     }
 

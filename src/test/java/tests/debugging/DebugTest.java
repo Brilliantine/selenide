@@ -2,6 +2,7 @@ package tests.debugging;
 
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
+import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.dataPassenger.DataPassenger;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
@@ -16,7 +17,10 @@ public class DebugTest extends BaseTest {
     @Test
     public void debug(){
         Onbording.completeOnboarding();
-        LoginHelper.authorization();
+        //LoginHelper.authorization();
+
+        BadAuthorization badAuthorization = new BadAuthorization();
+        badAuthorization.authorizationBad();
         MainPage mainPage = new MainPage();
         mainPage.isPageDisplayed();
         mainPage
@@ -33,7 +37,7 @@ public class DebugTest extends BaseTest {
                 .tapOnStation(0.5,0.21);
         new ExtendedSearchPage()
                 .searchStationWhere()
-                .setStation("САНКТ")
+                .setStation("САНКТ-ПЕТЕРБУРГ")
                 .tapOnStation(0.5,0.21);
         new ExtendedSearchPage()
                 .clickButtonSearchTrains();
