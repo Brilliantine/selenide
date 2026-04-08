@@ -14,6 +14,7 @@ public class BadAuthorization extends BasePage {
         }catch (Exception e){
             pressBack();
             System.out.println("Прожали кнопку Назад");
+            LoginHelper.verifySuccessfulLogin();
         }
     }
 }

@@ -47,7 +47,7 @@ public class DebugTest extends BaseTest {
         Progressbar.waitLoading();
         schedulePage
                 .checkInitElements()
-                .selectTrain("057М");
+                .selectTrain("016А");
         new TrainPage()
                 .checkInitElements()
                 .selectCarriage("02")
