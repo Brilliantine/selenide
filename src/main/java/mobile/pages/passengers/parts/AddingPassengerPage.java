@@ -126,7 +126,11 @@ public class AddingPassengerPage extends BasePage {
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + gender + "']"))
                 .shouldBe(visible)
                 .click();
-        listGender.shouldHave(text("Мужской"));
+        return this;
+    }
+    @Step("Выбран пол: {gender}")
+    public AddingPassengerPage checkingSex(String gender){
+        listGender.shouldHave(text(gender));
         return this;
     }
 

@@ -43,7 +43,7 @@ public class Initializer {
     }*/
 
     private static UiAutomator2Options getOptoins(){
-        return new UiAutomator2Options()
+        UiAutomator2Options options = new UiAutomator2Options() //return new UiAutomator2Options()
                 /*.setDeviceName(config.getProperty("deviceName"))
                 .setPlatformName(config.getProperty("platformName"))
                 .setAutomationName(config.getProperty("automationName"))
@@ -57,6 +57,9 @@ public class Initializer {
                 .setAppPackage(AppConfig.getInstance().getAppPackage())
                 .setAppActivity(AppConfig.getInstance().getProperty("appActivity"))
                 .disableWindowAnimation();
+
+                options.setCapability("settings[enableMultiWindows]", true);
+                return options;
     }
 
     public static void initDriver(){
