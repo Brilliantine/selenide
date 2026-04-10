@@ -14,7 +14,8 @@ public class DataPassenger extends BasePage {
     private final SelenideAppiumElement
             trainInfo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/train_info")),
             direction = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/direction")),
-            btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/fab"));
+            btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/fab")),
+            btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder"));
 
     @Step("Проверка начальных элементов страницы 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
@@ -30,5 +31,12 @@ public class DataPassenger extends BasePage {
                 .shouldBe(visible)
                 .click();
         return new PassengersPage();
+    }
+
+    @Step("Нажать на кнопку 'Продолжить'")
+    public void clickButtonNext(){
+        btnNext
+                .shouldBe(visible)
+                .click();
     }
 }

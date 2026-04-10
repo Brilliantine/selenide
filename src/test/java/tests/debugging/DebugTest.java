@@ -4,8 +4,11 @@ import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.dataPassenger.DataPassenger;
+import mobile.pages.documentsPassenger.ChooseDocumentPage;
+import mobile.pages.getReceipt.GetReceiptPage;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
+import mobile.pages.passengers.parts.AddingPassengerPage;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
 import mobile.pages.train.TrainPage;
@@ -62,7 +65,19 @@ public class DebugTest extends BaseTest {
                 .fillDataFromProfile()
                 //.checkingFullNameFields()
                 .setBirthday("08071996")
-                .selectGender("Мужской");
+                .selectGender("Мужской")
+                .addDocument()
+                .checkInitElements()
+                .setNumberDocument("8816999999")
+                .clickBtnSave();
+        new AddingPassengerPage()
+                .clickBtnSave();
+        new DataPassenger()
+                .clickButtonNext();
+        new GetReceiptPage()
+                .checkInitElements()
+                .clickBtnNext();
+        Progressbar.waitLoading();
 
 
 

@@ -36,9 +36,10 @@ public class DocumentPage extends BasePage {
     }
 
     @Step("Ввести номер документа: {number}")
-    public void setNumberDocument(String number){
+    public DocumentPage setNumberDocument(String number){
         docNumberEdit.click();
         docNumberEdit.setValue(number);
+        return this;
     }
 
     @Step("Раскрыть выпадающий список c типами документов")

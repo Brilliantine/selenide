@@ -18,4 +18,8 @@ public class ChooseDocumentPage extends BasePage {
         btnAddDoc.shouldBe(visible);
         return this;
     }
+    @Step("Выход с экрана Документы")
+    public void returnBackPage(){
+        pressBack();
+    }
 }

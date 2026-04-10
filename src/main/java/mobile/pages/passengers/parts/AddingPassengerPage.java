@@ -184,9 +184,8 @@ public class AddingPassengerPage extends BasePage {
     }
 
     @Step("Нажать на кнопку 'Сохранить'")
-    public AddingPassengerPage clickBtnSave(){
+    public void clickBtnSave(){
         btnSave.click();
-        return this;
     }
 
 }
