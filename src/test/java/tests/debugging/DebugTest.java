@@ -63,7 +63,6 @@ public class DebugTest extends BaseTest {
                 .clickBtnAddNewPassenger()
                 .checkInitElements()
                 .fillDataFromProfile()
-                //.checkingFullNameFields()
                 .setBirthday("08071996")
                 .selectGender("Мужской")
                 .addDocument()

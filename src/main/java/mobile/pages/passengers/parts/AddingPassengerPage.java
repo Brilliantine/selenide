@@ -93,30 +93,6 @@ public class AddingPassengerPage extends BasePage {
         return this;
     }
 
-    @Step("Проверка полей ФИО после автозаполнения")
-    public AddingPassengerPage checkingFullNameFields(){
-        lastname
-                .shouldBe(visible)
-                .shouldNotHave(value(""));
-        name
-                .shouldBe(visible)
-                .shouldNotHave(value(""));
-
-        // Проверяем состояние поля отчества и связанного чекбокса
-        String patronymicValue = patronymic.getValue();
-
-        if(patronymicValue == null || patronymicValue.isEmpty()){
-            patronymicEmptyCheck.shouldHave(attribute("checked","true"));
-            patronymic.shouldBe(disabled);
-        }else {
-            patronymic
-                    .shouldBe(visible)
-                    .shouldNotHave(value(""));
-        }
-
-        return this;
-    }
-
     @Step("Выбрать пол: {gender}")
     public AddingPassengerPage selectGender(String gender){
         listGender
