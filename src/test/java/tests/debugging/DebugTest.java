@@ -53,7 +53,7 @@ public class DebugTest extends BaseTest {
                 .selectTrain("016А");
         new TrainPage()
                 .checkInitElements()
-                .selectCarriage("02")
+                .selectCarriage("03")
                 .checkInitElements()
                 .clickButtonContinue();
         new DataPassenger()

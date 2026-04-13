@@ -15,7 +15,10 @@ public class DataPassenger extends BasePage {
             trainInfo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/train_info")),
             direction = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/direction")),
             btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/fab")),
-            btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder"));
+            btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder")),
+            btnEditTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/edit_button")),
+            fieldTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Тариф:\")")),
+            fieldTariffDefault = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")"));
 
     @Step("Проверка начальных элементов страницы 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
