@@ -72,6 +72,7 @@ public class DebugTest extends BaseTest {
         new AddingPassengerPage()
                 .clickBtnSave();
         new DataPassenger()
+                .selectFullTariff()
                 .clickButtonNext();
         new GetReceiptPage()
                 .checkInitElements()

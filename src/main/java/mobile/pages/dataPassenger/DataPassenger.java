@@ -18,7 +18,9 @@ public class DataPassenger extends BasePage {
             btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder")),
             btnEditTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/edit_button")),
             fieldTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Тариф:\")")),
-            fieldTariffDefault = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")"));
+            fieldTariffDefault = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")")),
+            dropDownTariffs = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/spinner_layout")),
+            btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button"));
 
     @Step("Проверка начальных элементов страницы 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
@@ -41,5 +43,50 @@ public class DataPassenger extends BasePage {
         btnNext
                 .shouldBe(visible)
                 .click();
+    }
+
+    @Step("Нажать на кнопку 'Изменить' у блока с тарифом")
+    public DataPassenger clickButtonEditTariff(){
+        btnEditTariff
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Проверка выбран ли тариф по умолчанию")
+    public boolean checkNoSelectedTariff(){
+        return fieldTariffDefault.is(visible);
+    }
+
+    @Step("Раскрыть список тарифов")
+    public DataPassenger clickDropDownTariffs(){
+        dropDownTariffs
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    //Раскрыть список тарифов
+    public void expandTariffList(){
+        clickButtonEditTariff();
+        clickDropDownTariffs();
+    }
+
+    @Step("Выбрать тариф 'Полный'")
+    public DataPassenger selectFullTariff(){
+        expandTariffList();
+        $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Полный\")"))
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Выбрать тариф '{tariffName}'")
+    public DataPassenger selectTariff(String tariffName){
+        expandTariffList();
+        $(AppiumBy.androidUIAutomator("new UiSelector().text(\""+tariffName+"\")"))
+                .shouldBe(visible)
+                .click();
+        return this;
     }
 }
