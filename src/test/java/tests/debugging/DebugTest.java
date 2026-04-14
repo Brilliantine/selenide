@@ -3,6 +3,7 @@ package tests.debugging;
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
+import mobile.helper.chooseTariff.SelectTariffHelper;
 import mobile.pages.dataPassenger.DataPassenger;
 import mobile.pages.documentsPassenger.ChooseDocumentPage;
 import mobile.pages.getReceipt.GetReceiptPage;
@@ -71,9 +72,11 @@ public class DebugTest extends BaseTest {
                 .clickBtnSave();
         new AddingPassengerPage()
                 .clickBtnSave();
-        new DataPassenger()
+        SelectTariffHelper.selectFullTariff();
+        /*new DataPassenger()
+                .expandTariffList()
                 .selectFullTariff()
-                .clickButtonNext();
+                .clickButtonNext();*/
         new GetReceiptPage()
                 .checkInitElements()
                 .clickBtnNext();

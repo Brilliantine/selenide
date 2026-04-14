@@ -18,7 +18,7 @@ public class DataPassenger extends BasePage {
             btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder")),
             btnEditTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/edit_button")),
             fieldTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Тариф:\")")),
-            fieldTariffDefault = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")")),
+            noSelectTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")")),
             dropDownTariffs = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/spinner_layout")),
             btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button"));
 
@@ -55,7 +55,7 @@ public class DataPassenger extends BasePage {
 
     @Step("Проверка выбран ли тариф по умолчанию")
     public boolean checkNoSelectedTariff(){
-        return fieldTariffDefault.is(visible);
+        return noSelectTariff.is(visible);
     }
 
     @Step("Раскрыть список тарифов")
@@ -67,14 +67,14 @@ public class DataPassenger extends BasePage {
     }
 
     //Раскрыть список тарифов
-    public void expandTariffList(){
+    public DataPassenger expandTariffList(){
         clickButtonEditTariff();
         clickDropDownTariffs();
+        return this;
     }
 
     @Step("Выбрать тариф 'Полный'")
     public DataPassenger selectFullTariff(){
-        expandTariffList();
         $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Полный\")"))
                 .shouldBe(visible)
                 .click();
@@ -83,7 +83,6 @@ public class DataPassenger extends BasePage {
 
     @Step("Выбрать тариф '{tariffName}'")
     public DataPassenger selectTariff(String tariffName){
-        expandTariffList();
         $(AppiumBy.androidUIAutomator("new UiSelector().text(\""+tariffName+"\")"))
                 .shouldBe(visible)
                 .click();
