@@ -56,7 +56,7 @@ public class DebugTest extends BaseTest {
         TrainPage trainPage = new TrainPage();
         trainPage
                 .checkInitElements()
-                .selectCarriage("03")
+                .selectCarriage("01")
                 .checkInitElements()
                 .clickButtonContinue();
         DataPassenger dataPassenger = new DataPassenger();
@@ -87,9 +87,11 @@ public class DebugTest extends BaseTest {
         BasketPage basketPage = new BasketPage();
         basketPage
                 .clickButtonPay();
-        /*ModalInsurance modalInsurance = new ModalInsurance();
+        ModalInsurance modalInsurance = new ModalInsurance();
         modalInsurance
-                .skipModalInsurance();*/
+                .skipModalInsurance();
+        basketPage
+                .clickButtonPay();
 
 
 

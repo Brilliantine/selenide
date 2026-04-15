@@ -10,7 +10,7 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class ModalInsurance extends BasePage {
     private final SelenideAppiumElement
-            modalInsurance = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/message")),
+            modalInsurance = $(AppiumBy.id("android:id/message")),
             btnNoInsurance = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/button1")),
             btnYesInsurance = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/button2"));
 
