@@ -22,7 +22,7 @@ public class DataPassenger extends BasePage {
             dropDownTariffs = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/spinner_layout")),
             btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button"));
 
-    @Step("Проверка начальных элементов страницы 'Данные пассажиры'")
+    @Step("Проверка начальных элементов экрана 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
         trainInfo.shouldBe(visible);
         direction.shouldBe(visible);
