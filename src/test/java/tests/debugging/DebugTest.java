@@ -3,11 +3,13 @@ package tests.debugging;
 import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
+import mobile.pages.basket.BasketPage;
 import mobile.pages.dataPassenger.DataPassenger;
 import mobile.pages.documentsPassenger.ChooseDocumentPage;
 import mobile.pages.getReceipt.GetReceiptPage;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
+import mobile.pages.parts.modal.ModalInsurance;
 import mobile.pages.passengers.parts.AddingPassengerPage;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
@@ -78,6 +80,10 @@ public class DebugTest extends BaseTest {
                 .checkInitElements()
                 .clickBtnNext();
         Progressbar.waitLoading();
+        new BasketPage()
+                .clickButtonPay();
+        new ModalInsurance()
+                .skipModalInsurance();
 
 
 
