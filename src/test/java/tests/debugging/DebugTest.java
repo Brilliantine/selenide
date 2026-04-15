@@ -40,11 +40,11 @@ public class DebugTest extends BaseTest {
                 .searchStationFrom()
                 .setStation("МОСКВА")
                 .tapOnStation(0.5,0.21);
-        new ExtendedSearchPage()
+        extendedSearchPage
                 .searchStationWhere()
                 .setStation("САНКТ-ПЕТЕРБУРГ")
                 .tapOnStation(0.5,0.21);
-        new ExtendedSearchPage()
+        extendedSearchPage
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
         SchedulePage schedulePage = new SchedulePage()
@@ -53,12 +53,14 @@ public class DebugTest extends BaseTest {
         schedulePage
                 .checkInitElements()
                 .selectTrain("016А");
-        new TrainPage()
+        TrainPage trainPage = new TrainPage();
+        trainPage
                 .checkInitElements()
                 .selectCarriage("03")
                 .checkInitElements()
                 .clickButtonContinue();
-        new DataPassenger()
+        DataPassenger dataPassenger = new DataPassenger();
+        dataPassenger
                 .checkInitElements()
                 .clickButtonAddPassenger()
                 .checkInitElements()
@@ -71,19 +73,23 @@ public class DebugTest extends BaseTest {
                 .checkInitElements()
                 .setNumberDocument("8816999999")
                 .clickBtnSave();
-        new AddingPassengerPage()
+        AddingPassengerPage addingPassengerPage = new AddingPassengerPage();
+        addingPassengerPage
                 .clickBtnSave();
-        new DataPassenger()
+        dataPassenger
                 .selectFullTariffHelper()
                 .clickButtonNext();
-        new GetReceiptPage()
+        GetReceiptPage getReceiptPage = new GetReceiptPage();
+        getReceiptPage
                 .checkInitElements()
                 .clickBtnNext();
         Progressbar.waitLoading();
-        new BasketPage()
+        BasketPage basketPage = new BasketPage();
+        basketPage
                 .clickButtonPay();
-        new ModalInsurance()
-                .skipModalInsurance();
+        /*ModalInsurance modalInsurance = new ModalInsurance();
+        modalInsurance
+                .skipModalInsurance();*/
 
 
 
