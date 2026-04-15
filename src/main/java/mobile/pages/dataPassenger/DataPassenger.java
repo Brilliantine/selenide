@@ -88,4 +88,18 @@ public class DataPassenger extends BasePage {
                 .click();
         return this;
     }
+
+    public DataPassenger selectFullTariffHelper(){
+        if(checkNoSelectedTariff()){
+            expandTariffList();
+            selectFullTariff();
+        }
+        return this;
+    }
+
+    public DataPassenger selectTariffHelper(String tariffName){
+        expandTariffList();
+        selectTariff(tariffName);
+        return this;
+    }
 }
