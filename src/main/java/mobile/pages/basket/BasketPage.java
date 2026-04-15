@@ -24,10 +24,9 @@ public class BasketPage {
     }
 
     @Step("Нажать на кнопку 'Купить'")
-    public BasketPage clickButtonPay(){
+    public void clickButtonPay(){
         btnPay
                 .shouldBe(visible)
                 .click();
-        return this;
     }
 }
