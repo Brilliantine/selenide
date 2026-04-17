@@ -11,8 +11,8 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class ModalInsurance extends BasePage {
     private final SelenideAppiumElement
             modalInsurance = $(AppiumBy.id("android:id/message")),
-            btnNoInsurance = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/button1")),
-            btnYesInsurance = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/button2"));
+            btnNoInsurance = $(AppiumBy.id("android:id/button1")),
+            btnYesInsurance = $(AppiumBy.id("android:id/button2"));
 
     //Проверка отображения модального окна с предложением оформить страховку
     public boolean isModalInsurancePresent()

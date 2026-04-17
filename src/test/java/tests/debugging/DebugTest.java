@@ -90,8 +90,6 @@ public class DebugTest extends BaseTest {
         ModalInsurance modalInsurance = new ModalInsurance();
         modalInsurance
                 .skipModalInsurance();
-        basketPage
-                .clickButtonPay();
 
 
 
