@@ -1,4 +1,4 @@
-package mobile.pages.paymentMethod;
+package mobile.pages.pay.paymentMethod;
 
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
@@ -12,8 +12,8 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 public class PaymentMethodPage extends BasePage {
     private final SelenideAppiumElement
             title = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Способ оплаты\")")),
-            //card
-            //sbp
+            card = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Банковская карта\")")),
+            sbp = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Система быстрых платежей\")")),
             btnPay = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/btnContinue"));
 
     @Step("Проверка начальных элементов экрана 'Способ оплаты'")
@@ -28,5 +28,21 @@ public class PaymentMethodPage extends BasePage {
         btnPay
                 .shouldBe(visible)
                 .click();
+    }
+
+    @Step("Выбрать способ оплаты: банковской картой")
+    public PaymentMethodPage selectCard(){
+        card
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Выбрать способ оплаты: СБП")
+    public PaymentMethodPage selectSBP(){
+        sbp
+                .shouldBe(visible)
+                .click();
+        return this;
     }
 }

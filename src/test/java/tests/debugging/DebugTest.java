@@ -1,16 +1,16 @@
 package tests.debugging;
 
-import mobile.helper.LoginHelper;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.basket.BasketPage;
 import mobile.pages.dataPassenger.DataPassenger;
-import mobile.pages.documentsPassenger.ChooseDocumentPage;
 import mobile.pages.getReceipt.GetReceiptPage;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
 import mobile.pages.parts.modal.ModalInsurance;
 import mobile.pages.passengers.parts.AddingPassengerPage;
+import mobile.pages.pay.PayPage;
+import mobile.pages.pay.paymentMethod.PaymentMethodPage;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
 import mobile.pages.train.TrainPage;
@@ -90,6 +90,15 @@ public class DebugTest extends BaseTest {
         ModalInsurance modalInsurance = new ModalInsurance();
         modalInsurance
                 .skipModalInsurance();
+        PaymentMethodPage paymentMethodPage = new PaymentMethodPage();
+        paymentMethodPage
+                .checkInitElements()
+                .selectCard()
+                .clickButtonPay();
+        Progressbar.waitLoading();
+        PayPage payPage = new PayPage();
+        payPage
+                .checkInitElements();
 
 
 
