@@ -99,7 +99,11 @@ public class DebugTest extends BaseTest {
         PayPage payPage = new PayPage();
         Progressbar.waitLoading();
         payPage
-                .checkInitElements();
+                .checkInitElements()
+                .setNumberCard("4058889915002926")
+                .setExpirationDate("1227")
+                .setCVV("415")
+                .clickButtonPay();
 
 
 

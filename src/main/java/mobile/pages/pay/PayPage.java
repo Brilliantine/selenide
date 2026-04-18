@@ -31,4 +31,23 @@ public class PayPage extends BasePage {
     public void clickButtonPay(){
         btnPay.click();
     }
+
+    @Step("Заполнить номер карты данными: '{number}'")
+    public PayPage setNumberCard(String number){
+        fieldNumberCard.setValue(number);
+        return this;
+    }
+
+    @Step("Заполнить дату данными: '{date}'")
+    public PayPage setExpirationDate(String date){
+        fieldExpirationDate.click();
+        fieldExpirationDate.setValue(date);
+        return this;
+    }
+
+    @Step("Заполнить CVV данными: '{cvv}'")
+    public PayPage setCVV(String cvv){
+        fieldCVV.setValue(cvv);
+        return this;
+    }
 }
