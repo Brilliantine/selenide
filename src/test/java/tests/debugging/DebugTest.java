@@ -97,6 +97,7 @@ public class DebugTest extends BaseTest {
                 .clickButtonPay();
         Progressbar.waitLoading();
         PayPage payPage = new PayPage();
+        Progressbar.waitLoading();
         payPage
                 .checkInitElements();
 

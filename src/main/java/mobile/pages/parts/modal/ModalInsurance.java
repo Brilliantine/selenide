@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumBy;
 import mobile.pages.base.BasePage;
 import mobile.utils.AppConfig;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -18,7 +20,7 @@ public class ModalInsurance extends BasePage {
     public boolean isModalInsurancePresent()
     {
         //return modalInsurance.isDisplayed();
-        return modalInsurance.is(visible);
+        return modalInsurance.is(visible, Duration.ofSeconds(5));
     }
 
     public void clickYesButton()
