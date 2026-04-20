@@ -38,5 +38,11 @@ public class ModalAddToCalendar {
                 .shouldBe(visible)
                 .click();
     }
+    //Скип модалки
+    public void skipModalAddToCalendar() {
+        if(isModalAddToCalendarPresent()){
+            clickBtnNo();
+        }
+    }
 
 }
