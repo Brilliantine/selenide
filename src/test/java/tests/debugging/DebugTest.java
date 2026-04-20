@@ -7,6 +7,7 @@ import mobile.pages.dataPassenger.DataPassenger;
 import mobile.pages.getReceipt.GetReceiptPage;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
+import mobile.pages.parts.modal.ModalAttention;
 import mobile.pages.parts.modal.ModalInsurance;
 import mobile.pages.passengers.parts.AddingPassengerPage;
 import mobile.pages.pay.PayPage;
@@ -90,6 +91,9 @@ public class DebugTest extends BaseTest {
         ModalInsurance modalInsurance = new ModalInsurance();
         modalInsurance
                 .skipModalInsurance();
+        ModalAttention modalAttention = new ModalAttention();
+        modalAttention
+                .skipModalAttention();
         PaymentMethodPage paymentMethodPage = new PaymentMethodPage();
         paymentMethodPage
                 .checkInitElements()
