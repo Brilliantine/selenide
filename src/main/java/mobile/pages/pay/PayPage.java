@@ -4,6 +4,7 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
+import mobile.pages.parts.Progressbar;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
@@ -30,6 +31,7 @@ public class PayPage extends BasePage {
     @Step("Нажать кнопку 'Оплатить'")
     public void clickButtonPay(){
         btnPay.click();
+        Progressbar.waitLoading(60);
     }
 
     @Step("Заполнить номер карты данными: '{number}'")

@@ -22,6 +22,13 @@ public class Progressbar {
             progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(15));
         }
     }
+    @Step("Ожидание появления и исчезновения загрузки в течение {time} с")
+    public static void waitLoading(long time) {
+        if ($(AppiumBy.xpath("//android.widget.ProgressBar"))
+                .is(visible, Duration.ofSeconds(5))) {
+            progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(time));
+        }
+    }
 
     public static boolean isLoadingDisplayed(){
         return progressBar.is(visible);

@@ -14,6 +14,7 @@ public class PaymentMethodPage extends BasePage {
             title = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Способ оплаты\")")),
             card = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Банковская карта\")")),
             sbp = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Система быстрых платежей\")")),
+            mirPay = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"MirPay\")")),
             btnPay = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/btnContinue"));
 
     @Step("Проверка начальных элементов экрана 'Способ оплаты'")
@@ -41,6 +42,14 @@ public class PaymentMethodPage extends BasePage {
     @Step("Выбрать способ оплаты: СБП")
     public PaymentMethodPage selectSBP(){
         sbp
+                .shouldBe(visible)
+                .click();
+        return this;
+    }
+
+    @Step("Выбрать способ оплаты: МирПэй")
+    public PaymentMethodPage selectMirPay(){
+        mirPay
                 .shouldBe(visible)
                 .click();
         return this;
