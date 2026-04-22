@@ -34,7 +34,6 @@ public class BasketPage {
     @Step("Проверка успешной покупки билета")
     public BasketPage checkSuccessBought(){
         Progressbar.waitLoading(60);
-        //ModalAddToCalendar modalAddToCalendar = new ModalAddToCalendar();
         String MODAL_ADD_TO_CALENDAR = "Добавлять билеты в календарь после оплаты?";
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + MODAL_ADD_TO_CALENDAR + "']"))
                 .shouldBe(visible);
