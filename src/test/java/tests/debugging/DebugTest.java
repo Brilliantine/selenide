@@ -108,6 +108,8 @@ public class DebugTest extends BaseTest {
                 .setExpirationDate("1227")
                 .setCVV("415")
                 .clickButtonPay();
+        basketPage
+                .checkSuccessBought();
 
 
 

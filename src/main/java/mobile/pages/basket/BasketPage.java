@@ -3,6 +3,7 @@ package mobile.pages.basket;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
+import mobile.pages.parts.Progressbar;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -28,5 +29,15 @@ public class BasketPage {
         btnPay
                 .shouldBe(visible)
                 .click();
+    }
+
+    @Step("Проверка успешной покупки билета")
+    public BasketPage checkSuccessBought(){
+        Progressbar.waitLoading(60);
+        //ModalAddToCalendar modalAddToCalendar = new ModalAddToCalendar();
+        String MODAL_ADD_TO_CALENDAR = "Добавлять билеты в календарь после оплаты?";
+        $(AppiumBy.xpath("//android.widget.TextView[@text='" + MODAL_ADD_TO_CALENDAR + "']"))
+                .shouldBe(visible);
+        return this;
     }
 }
