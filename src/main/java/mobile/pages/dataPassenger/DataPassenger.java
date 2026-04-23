@@ -7,6 +7,9 @@ import mobile.pages.base.BasePage;
 import mobile.pages.passengers.PassengersPage;
 import mobile.utils.AppConfig;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.hidden;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -20,7 +23,8 @@ public class DataPassenger extends BasePage {
             fieldTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Тариф:\")")),
             noSelectTariff = $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Не выбран\")")),
             dropDownTariffs = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/spinner_layout")),
-            btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button"));
+            btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button")),
+            tariffProgressLayout = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/layoutTariffProgress"));
 
     @Step("Проверка начальных элементов экрана 'Данные пассажиры'")
     public DataPassenger checkInitElements(){
@@ -91,6 +95,7 @@ public class DataPassenger extends BasePage {
 
     public DataPassenger selectFullTariffHelper(){
         if(checkNoSelectedTariff()){
+            waitForTariffLoading();
             expandTariffList();
             selectFullTariff();
         }
@@ -98,8 +103,17 @@ public class DataPassenger extends BasePage {
     }
 
     public DataPassenger selectTariffHelper(String tariffName){
+        waitForTariffLoading();
         expandTariffList();
         selectTariff(tariffName);
         return this;
+    }
+
+    @Step("Ожидаем загрузку тарифов")
+    public void waitForTariffLoading(){
+        if (tariffProgressLayout.is(visible, Duration.ofSeconds(3))){
+            tariffProgressLayout.shouldBe(hidden, Duration.ofSeconds(30));
+        }
+
     }
 }
