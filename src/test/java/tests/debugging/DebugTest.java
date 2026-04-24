@@ -1,5 +1,6 @@
 package tests.debugging;
 
+import io.qameta.allure.*;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.basket.BasketPage;
@@ -15,12 +16,19 @@ import mobile.pages.pay.paymentMethod.PaymentMethodPage;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
 import mobile.pages.train.TrainPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
+@Epic("Клиент")
+@Feature("Покупка билета ДС")
 public class DebugTest extends BaseTest {
 
     @Test
+    @Story("Покупка билета МСК - СПБ")
+    @Description("Проверяем покупку билета")
+    @Severity(SeverityLevel.BLOCKER)
+    @Tag("debug")
     public void debug(){
         Onbording.completeOnboarding();
         //LoginHelper.authorization();

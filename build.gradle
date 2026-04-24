@@ -36,11 +36,17 @@ allure {
 }
 
 test {
-    if(System.getenv('CI')){
-        useJUnitPlatform{
+    if (System.getenv('CI')) {
+        useJUnitPlatform {
             includeTags 'acceptanceTest'
         }
-    }else {
+    } else if (System.getProperty('includeTags')) {
+        // Локальный запуск с тегами
+        useJUnitPlatform {
+            includeTags System.getProperty('includeTags')
+        }
+    } else {
+        // Локальный запуск без фильтрации
         useJUnitPlatform()
     }
     testLogging {
@@ -48,8 +54,4 @@ test {
         showStandardStreams = true
     }
 
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
