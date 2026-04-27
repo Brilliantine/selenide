@@ -2,14 +2,15 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.appium.SelenideAppium;
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
-import lombok.extern.slf4j.Slf4j;
 import mobile.utils.Initializer;
+import tests.utils.ScreenshotOnFailureExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+@ExtendWith(ScreenshotOnFailureExtension.class)
 public class BaseTest {
 
     protected AppiumDriver driver;
