@@ -55,7 +55,7 @@ test {
         showStandardStreams = true
     }
     retry {
-        maxRetries = 2
+        maxRetries = 1
     }
 
 }
