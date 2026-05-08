@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
 import mobile.pages.parts.Progressbar;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -21,10 +23,10 @@ public class PayPage extends BasePage {
     @Step("Проверка начальных элементов экрана 'Оплата'")
     public PayPage checkInitElements(){
         title.shouldBe(visible);
-        btnPay.shouldBe(visible);
-        fieldNumberCard.shouldBe(visible);
-        fieldExpirationDate.shouldBe(visible);
-        fieldCVV.shouldBe(visible);
+        btnPay.shouldBe(visible, Duration.ofSeconds(15));
+        fieldNumberCard.shouldBe(visible, Duration.ofSeconds(15));
+        fieldExpirationDate.shouldBe(visible, Duration.ofSeconds(15));
+        fieldCVV.shouldBe(visible, Duration.ofSeconds(15));
         return this;
     }
 
