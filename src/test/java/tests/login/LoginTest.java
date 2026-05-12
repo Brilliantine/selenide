@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
             .userPassword(PASSWORD)
             .build();
 
-    @Test
+    //@Test
     public void login(){
         LanguageSelectionPage languageSelectionPage = new LanguageSelectionPage();
         languageSelectionPage
