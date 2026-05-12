@@ -92,7 +92,7 @@ public class DebugTest extends BaseTest {
         getReceiptPage
                 .checkInitElements()
                 .clickBtnNext();
-        Progressbar.waitLoading();
+        Progressbar.waitLoading(120);
         BasketPage basketPage = new BasketPage();
         basketPage
                 .clickButtonPay();

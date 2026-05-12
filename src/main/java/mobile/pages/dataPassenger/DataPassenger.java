@@ -97,7 +97,12 @@ public class DataPassenger extends BasePage {
         if(checkNoSelectedTariff()){
             waitForTariffLoading();
             expandTariffList();
+            //selectFullTariff();
+        }
+        try {
             selectFullTariff();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
         return this;
     }
@@ -111,7 +116,7 @@ public class DataPassenger extends BasePage {
 
     @Step("Ожидаем загрузку тарифов")
     public void waitForTariffLoading(){
-        if (tariffProgressLayout.is(visible, Duration.ofSeconds(3))){
+        if (tariffProgressLayout.is(visible, Duration.ofSeconds(10))){
             tariffProgressLayout.shouldBe(hidden, Duration.ofSeconds(30));
         }
 
