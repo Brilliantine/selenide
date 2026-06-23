@@ -1,6 +1,7 @@
 package tests.debugging;
 
 import io.qameta.allure.*;
+import mobile.dto.TrainData;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.basket.BasketPage;
@@ -16,6 +17,7 @@ import mobile.pages.pay.paymentMethod.PaymentMethodPage;
 import mobile.pages.schedule.SchedulePage;
 import mobile.pages.searchTrains.ExtendedSearchPage;
 import mobile.pages.train.TrainPage;
+import mobile.utils.TrainDataReader;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
@@ -30,6 +32,8 @@ public class DebugTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Tag("debug")
     public void debug(){
+        TrainData train = TrainDataReader.read();
+
         Onbording.completeOnboarding();
         //LoginHelper.authorization();
 
@@ -61,7 +65,8 @@ public class DebugTest extends BaseTest {
         Progressbar.waitLoading();
         schedulePage
                 .checkInitElements()
-                .selectTrain("016А");
+                //.selectTrain("016А");
+                .selectTrain(train.getTrainNumber());
         TrainPage trainPage = new TrainPage();
         trainPage
                 .checkInitElements()
