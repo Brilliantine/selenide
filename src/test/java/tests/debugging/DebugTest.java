@@ -46,7 +46,8 @@ public class DebugTest extends BaseTest {
                 .checkInitElements()
                 .clickFromDate()
                 .checkInitElements()
-                .selectDateFromToday(3)
+                //.selectDateFromToday(3)
+                .selectDateFromJson(train.getDepartureDate())
                 .clickContinue();
         ExtendedSearchPage extendedSearchPage = new ExtendedSearchPage();
         extendedSearchPage

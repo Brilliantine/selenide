@@ -19,6 +19,7 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 public class CalendarPage {
 
     DateTimeFormatter formatter =ofPattern("dd MMMM",new Locale("ru"));
+    DateTimeFormatter jsonFormatter = DateTimeFormatter.ofPattern("dd.MMM.yyyy");
     LocalDate today = LocalDate.now();
 
     private final SelenideAppiumElement
@@ -70,6 +71,13 @@ public class CalendarPage {
     @Step("Выбор одной даты: {date}")
     public CalendarPage selectDate(LocalDate date){
         clickOneDate(date);
+        return this;
+    }
+
+    @Step("Выбор даты из JSON: {date}")
+    public CalendarPage selectDateFromJson(String date){
+        LocalDate localDate = LocalDate.parse(date, jsonFormatter);
+        clickOneDate(localDate);
         return this;
     }
 
