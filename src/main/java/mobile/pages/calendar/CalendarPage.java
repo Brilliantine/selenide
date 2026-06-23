@@ -19,7 +19,7 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 public class CalendarPage {
 
     DateTimeFormatter formatter =ofPattern("dd MMMM",new Locale("ru"));
-    DateTimeFormatter jsonFormatter = DateTimeFormatter.ofPattern("dd.MMM.yyyy");
+    DateTimeFormatter jsonFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     LocalDate today = LocalDate.now();
 
     private final SelenideAppiumElement
