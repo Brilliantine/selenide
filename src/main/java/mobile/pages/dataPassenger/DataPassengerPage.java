@@ -26,7 +26,7 @@ public class DataPassengerPage extends BasePage {
             btnSaveTariff = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/save_button")),
             tariffProgressLayout = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/layoutTariffProgress"));
 
-    @Step("Проверка начальных элементов экрана 'Данные пассажиры'")
+    @Step("Проверка начальных элементов экрана 'Данные пассажиров'")
     public DataPassengerPage checkInitElements(){
         trainInfo.shouldBe(visible);
         direction.shouldBe(visible);
