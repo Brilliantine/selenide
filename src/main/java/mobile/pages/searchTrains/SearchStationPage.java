@@ -61,32 +61,16 @@ public class SearchStationPage extends BasePage {
         waitAndClick(station);
     }
 
-    @Step("Нажимаем на первую станцию в списке")
-    public void clickFirstStation(){
-        SelenideAppiumElement station =
-                $$(AppiumBy.id(AppConfig.getInstance().getPathToElement() + ":id/tvTitle"))
-                        .shouldHave(sizeGreaterThan(0))
-                        .first();
-        station.tap();
-    }
+    //Нужно добавить метод скролла
+    @Step("Выбрать станцию: {value}")
+    public void selectStation(String value){
+        SelenideAppiumElement firstElem = $(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='android:id/list']/android.widget.LinearLayout[1]"));
+        SelenideAppiumElement exactMatch = $(AppiumBy.xpath("//android.widget.TextView[@resource-id='" + AppConfig.getInstance().getPathToElement() + ":id/tvTitle' and @text='" + value + "']"));
 
-    //Методы clickOnStationMainPage и clickOnStationExtendedSearchPage долгие и уже не актуальны
-    //Данный метод при тесте занимает около 1 минуты
-    @Step("Нажать на станцию: {value}")
-    public MainPage clickOnStationMainPage(String value){
-        By station = By.xpath("//android.widget.TextView[@resource-id='" +
-                AppConfig.getInstance().getPathToElement() +
-                ":id/tvTitle' and @text='" + value + "']");
-        waitAndClick(station);
-        return new MainPage();
-    }
-
-    @Step("Нажать на станцию: {value}")
-    public ExtendedSearchPage clickOnStationExtendedSearchPage(String value){
-        By station = By.xpath("//android.widget.TextView[@resource-id='" +
-                AppConfig.getInstance().getPathToElement() +
-                ":id/tvTitle' and @text='" + value + "']");
-        waitAndClick(station);
-        return new ExtendedSearchPage();
+        firstElem
+                .shouldBe(visible,Duration.ofSeconds(10));
+        exactMatch
+                .shouldBe(visible)
+                .click();
     }
 }

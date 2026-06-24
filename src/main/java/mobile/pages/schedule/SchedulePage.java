@@ -86,12 +86,13 @@ public class SchedulePage extends BasePage {
 
     @Step("Выбрать поезд № '{numberTrain}'")
     public void selectTrain(String numberTrain){
-        //$(AppiumBy.xpath(
-        //        //            "//android.view.ViewGroup[contains(@content-desc, '" + numberTrain + "')]"
-        //        //        ))
-        $(AppiumBy.xpath(
+        /*$(AppiumBy.xpath(
                     "//android.view.ViewGroup[contains(@content-desc, '" + numberTrain + "')]"
-                ))
+                ))*/
+        $(AppiumBy.androidUIAutomator(
+                "new UiSelector()" +
+                        ".resourceId(\"" + AppConfig.getInstance().getPathToElement() + ":id/train_info\")" +
+                        ".text(\"Поезд " + numberTrain + "\")"))
                 .scrollTo()
                 .shouldBe(visible)
                 .click();

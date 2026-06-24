@@ -5,7 +5,7 @@ import mobile.dto.TrainData;
 import mobile.helper.Onbording;
 import mobile.helper.badAuthorization.BadAuthorization;
 import mobile.pages.basket.BasketPage;
-import mobile.pages.dataPassenger.DataPassenger;
+import mobile.pages.dataPassenger.DataPassengerPage;
 import mobile.pages.getReceipt.GetReceiptPage;
 import mobile.pages.main.MainPage;
 import mobile.pages.parts.Progressbar;
@@ -52,12 +52,16 @@ public class DebugTest extends BaseTest {
         ExtendedSearchPage extendedSearchPage = new ExtendedSearchPage();
         extendedSearchPage
                 .searchStationFrom()
-                .setStation("МОСКВА")
-                .tapOnStation(0.5,0.21);
+                //.setStation("МОСКВА")
+                .setStation(train.getRouteFrom())
+                .clickOnStation(train.getRouteFrom().toUpperCase());
+                //.tapOnStation(0.5,0.21);
         extendedSearchPage
                 .searchStationWhere()
-                .setStation("САНКТ-ПЕТЕРБУРГ")
-                .tapOnStation(0.5,0.21);
+                //.setStation("САНКТ-ПЕТЕРБУРГ")
+                .setStation(train.getRouteTo())
+                .clickOnStation(train.getRouteTo().toUpperCase());
+                //.tapOnStation(0.5,0.21);
         extendedSearchPage
                 .clickButtonSearchTrains();
         Progressbar.waitLoading();
@@ -71,10 +75,10 @@ public class DebugTest extends BaseTest {
         TrainPage trainPage = new TrainPage();
         trainPage
                 .checkInitElements()
-                .selectCarriage("01")
+                .selectCarriage("30")
                 .checkInitElements()
                 .clickButtonContinue();
-        DataPassenger dataPassenger = new DataPassenger();
+        DataPassengerPage dataPassenger = new DataPassengerPage();
         dataPassenger
                 .checkInitElements()
                 .clickButtonAddPassenger()

@@ -13,9 +13,9 @@ import static com.codeborne.selenide.Condition.hidden;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
-public class DataPassenger extends BasePage {
+public class DataPassengerPage extends BasePage {
     private final SelenideAppiumElement
-            trainInfo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/train_info")),
+            trainInfo = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/trainInfo")),
             direction = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/direction")),
             btnAddPassenger = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/fab")),
             btnNext = $(AppiumBy.id(AppConfig.getInstance().getPathToElement()+":id/bookOrder")),
@@ -27,7 +27,7 @@ public class DataPassenger extends BasePage {
             tariffProgressLayout = $(AppiumBy.id(AppConfig.getInstance().getAppPackage()+":id/layoutTariffProgress"));
 
     @Step("Проверка начальных элементов экрана 'Данные пассажиры'")
-    public DataPassenger checkInitElements(){
+    public DataPassengerPage checkInitElements(){
         trainInfo.shouldBe(visible);
         direction.shouldBe(visible);
         btnAddPassenger.shouldBe(visible);
@@ -50,7 +50,7 @@ public class DataPassenger extends BasePage {
     }
 
     @Step("Нажать на кнопку 'Изменить' у блока с тарифом")
-    public DataPassenger clickButtonEditTariff(){
+    public DataPassengerPage clickButtonEditTariff(){
         btnEditTariff
                 .shouldBe(visible)
                 .click();
@@ -63,7 +63,7 @@ public class DataPassenger extends BasePage {
     }
 
     @Step("Раскрыть список тарифов")
-    public DataPassenger clickDropDownTariffs(){
+    public DataPassengerPage clickDropDownTariffs(){
         dropDownTariffs
                 .shouldBe(visible)
                 .click();
@@ -71,14 +71,14 @@ public class DataPassenger extends BasePage {
     }
 
     //Раскрыть список тарифов
-    public DataPassenger expandTariffList(){
+    public DataPassengerPage expandTariffList(){
         clickButtonEditTariff();
         clickDropDownTariffs();
         return this;
     }
 
     @Step("Выбрать тариф 'Полный'")
-    public DataPassenger selectFullTariff(){
+    public DataPassengerPage selectFullTariff(){
         $(AppiumBy.androidUIAutomator("new UiSelector().text(\"Полный\")"))
                 .shouldBe(visible)
                 .click();
@@ -86,14 +86,14 @@ public class DataPassenger extends BasePage {
     }
 
     @Step("Выбрать тариф '{tariffName}'")
-    public DataPassenger selectTariff(String tariffName){
+    public DataPassengerPage selectTariff(String tariffName){
         $(AppiumBy.androidUIAutomator("new UiSelector().text(\""+tariffName+"\")"))
                 .shouldBe(visible)
                 .click();
         return this;
     }
 
-    public DataPassenger selectFullTariffHelper(){
+    public DataPassengerPage selectFullTariffHelper(){
         if(checkNoSelectedTariff()){
             waitForTariffLoading();
             expandTariffList();
@@ -107,7 +107,7 @@ public class DataPassenger extends BasePage {
         return this;
     }
 
-    public DataPassenger selectTariffHelper(String tariffName){
+    public DataPassengerPage selectTariffHelper(String tariffName){
         waitForTariffLoading();
         expandTariffList();
         selectTariff(tariffName);

@@ -4,7 +4,6 @@ import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import mobile.pages.base.BasePage;
-import mobile.pages.dataPassenger.DataPassenger;
 import mobile.utils.AppConfig;
 
 import static com.codeborne.selenide.Condition.visible;
