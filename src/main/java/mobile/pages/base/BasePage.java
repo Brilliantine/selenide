@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
@@ -74,6 +75,20 @@ public class BasePage {
                 "percent", 0.2
         );
         Initializer.getDriver().executeScript("mobile: scrollGesture", params);
+    }
+    //Скролл вниз к элементу
+    public SelenideAppiumElement scrollDownElement(SelenideAppiumElement element){
+        int maxScrolls = 30;
+
+
+        for (int i = 0; i <= maxScrolls; i++) {
+            if(element.is(visible)){
+                return element;
+            }
+            shortScroll();
+            sleep(500);
+        }
+        throw new RuntimeException("Элемент не найден после " + maxScrolls + " скроллов");
     }
     //Нажатие системной кнопки Назад
     public void pressBack(){
