@@ -16,4 +16,5 @@ public class TrainData {
     private int price;
     private int freeSeats;
     private String carrier;
+    private String carriageNumber;
 }

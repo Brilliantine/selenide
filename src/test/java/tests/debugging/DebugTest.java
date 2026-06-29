@@ -75,7 +75,7 @@ public class DebugTest extends BaseTest {
         TrainPage trainPage = new TrainPage();
         trainPage
                 .checkInitElements()
-                .selectCarriage("30")
+                .selectCarriage(train.getCarriageNumber())
                 .checkInitElements()
                 .clickButtonContinue();
         DataPassengerPage dataPassenger = new DataPassengerPage();

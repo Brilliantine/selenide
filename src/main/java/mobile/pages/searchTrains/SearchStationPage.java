@@ -59,6 +59,12 @@ public class SearchStationPage extends BasePage {
                 AppConfig.getInstance().getPathToElement() +
                 ":id/tvTitle' and @text='" + value + "']");
         waitAndClick(station);
+        /*$(AppiumBy.androidUIAutomator(
+                "new UiSelector()" +
+                        ".resourceId(\"" + AppConfig.getInstance().getPathToElement() + ":id/tvTitle\")" +
+                        ".text(\"" + value + "\")"))
+                .shouldBe(visible)
+                .click();*/
     }
 
     //Нужно добавить метод скролла

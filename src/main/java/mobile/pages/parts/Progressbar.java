@@ -22,10 +22,17 @@ public class Progressbar {
             progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(15));
         }
     }
+    @Step("Ожидание появления и исчезновения загрузки в течение {timeHiddenProgressBar} с")
+    public static void waitLoading(long timeShowProgressBar, long timeHiddenProgressBar) {
+        if ($(AppiumBy.xpath("//android.widget.ProgressBar"))
+                .is(visible, Duration.ofSeconds(timeShowProgressBar))) {
+            progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(timeHiddenProgressBar));
+        }
+    }
     @Step("Ожидание появления и исчезновения загрузки в течение {time} с")
     public static void waitLoading(long time) {
         if ($(AppiumBy.xpath("//android.widget.ProgressBar"))
-                .is(visible, Duration.ofSeconds(5))) {
+                .is(visible, Duration.ofSeconds(10))) {
             progressBar.shouldBe(Condition.hidden, Duration.ofSeconds(time));
         }
     }
