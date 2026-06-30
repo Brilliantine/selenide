@@ -1,0 +1,18 @@
+#appium server
+appiumServerURL = http://127.0.0.1:4723/
+deviceName = emulator-5554
+platformName = Android
+appActivity=ru.rzd.pass.feature.appstarter.SplashActivity
+automationName = UiAutomator2
+
+#Packages
+appPackage=ru.rzd.pass.debug
+appPackageAdapter = ru.rzd.pass.adapter.debug
+appPackageProd=ru.rzd.pass
+
+# fallback
+buildType=debug
+
+#user data
+LOGIN =
+PASSWORD =
