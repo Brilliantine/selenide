@@ -1,13 +1,13 @@
 {
   "trainNumber" : "016А",
-  "departureDate" : "30.07.2026",
+  "departureDate" : "01.08.2026",
   "departureTime" : "00:46",
   "routeFrom" : "Москва Октябрьская",
   "routeTo" : "Санкт-Петербург Ладож.",
   "carType" : "Купе",
   "serviceClass" : "2Э",
-  "price" : 5990,
-  "freeSeats" : 14,
+  "price" : 8960,
+  "freeSeats" : 36,
   "carrier" : "ФПК",
-  "carriageNumber" : "01"
+  "carriageNumber" : "34"
 }
